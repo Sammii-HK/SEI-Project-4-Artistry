@@ -1,7 +1,7 @@
 from flask import Flask
 from pony.orm import Database, db_session
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='public')
 db = Database()
 
 db.bind('postgres', 'postgres://localhost:5432/artistry-db')
