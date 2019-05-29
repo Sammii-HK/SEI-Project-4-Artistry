@@ -4,31 +4,29 @@ import axios from 'axios'
 import Navbar from './Navbar'
 import Search from '../gallery/Search'
 
-class Gallery extends React.Component {
+class Home extends React.Component {
   constructor() {
     super()
 
     this.state = {
-      data: {}
+      data: null
     }
+
+    this.getArt = this.getArt.bind(this)
   }
 
   getArt() {
-    axios.get('/rijksmuseum/collection')
-      .then(res => this.setState({ data: res.data }))
+    axios.get('/api/rijksmuseum/collection')
+      .then(res => this.setState({ data: res.data.artObjects }))
       .catch(err => console.error(err))
   }
-  // getArt() {
-  //   axios.get(`https://www.rijksmuseum.nl/api/en/collection/${rijksKey}`)
-  //     .then(res => this.setState({ data: res.data }))
-  //     .catch(err => console.error(err))
-  // }
+
   componentDidMount() {
     this.getArt()
   }
 
   render() {
-    // if (!this.state) return <h1>Loading...</h1>
+    if (!this.state.data) return <h1>Loading...</h1>
     return (
       <main>
         <Navbar />
@@ -41,4 +39,4 @@ class Gallery extends React.Component {
 }
 
 
-export default Gallery
+export default Home
