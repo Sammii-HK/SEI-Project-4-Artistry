@@ -1,20 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-// import axios from 'axios'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import axios from 'axios'
+
+import Home from './components/common/Home'
+import Login from './components/auth/Login'
+import Register from './components/auth/Register'
+import Profile from './components/auth/Profile'
+
+import 'bulma'
 
 class App extends React.Component {
-  //
-  // componentDidMount() {
-  //   axios.get('')
-  //     .then(res => this.setState({ data: res.data }))
-  // }
 
   render() {
-    if(!this.state) return <p>Loading...</p>
+    // if(!this.state) return <p>Loading...</p>
     return (
-      <div>
-        <h1>Hello World!</h1>
-      </div>
+      <Router>
+        <Switch>
+
+          <Route path="/profile" component={Profile} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={Register} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
     )
   }
 }

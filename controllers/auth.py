@@ -25,7 +25,6 @@ def register():
         'token': user.generate_token()
     })
 
-
 @router.route('/login', methods=['POST'])
 @db_session
 def login():
@@ -40,4 +39,16 @@ def login():
     return jsonify({
         'message': f'Welcome back {user.username}',
         'token': user.generate_token()
+    })
+
+@router.route('/profile', methods=['GET'])
+@db_session
+def profile():
+
+    data = request.get_json()
+
+    user = User.get(email=data.get('email'))
+
+    return jsonify({
+        'message': f'{user.username}, welcome to your profile page'
     })
