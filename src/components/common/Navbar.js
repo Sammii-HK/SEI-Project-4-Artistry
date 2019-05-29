@@ -13,10 +13,20 @@ class Navbar extends React.Component {
     }
 
     this.toggleActive = this.toggleActive.bind(this)
+    this.logout = this.logout.bind(this)
   }
 
   toggleActive() {
     this.setState({ active: !this.state.active })
+  }
+
+  logout() {
+    Auth.removeToken()
+    this.props.updatePage()
+  }
+
+  updatePage(){
+    this.forceUpdate()
   }
 
   render() {
@@ -40,7 +50,7 @@ class Navbar extends React.Component {
             <div className="navbar-start">
               {/* left-hand links */}
               {!Auth.isAuthenticated() &&<Link to='/register' className="navbar-item">Register</Link>}
-              {!Auth.isAuthenticated() &&<Link to='/register' className="navbar-item">Log in</Link>}
+              {!Auth.isAuthenticated() &&<Link to='/login' className="navbar-item">Log in</Link>}
               {Auth.isAuthenticated() &&
               <Link to='/profile' className="navbar-item">Profile</Link>}
               {Auth.isAuthenticated() &&
@@ -49,8 +59,8 @@ class Navbar extends React.Component {
             </div>
             <div className="navbar-end">
               {/* right-hand links */}
-              <Link to='/search' className="navbar-item">Search</Link>
-              <Link to='/gallery' className="navbar-item">Gallery</Link>
+              {// <Link to='/search' className="navbar-item">Search</Link>
+              }
             </div>
           </div>
         </div>

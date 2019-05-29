@@ -1,7 +1,5 @@
 import React from 'react'
 
-import Navbar from '../common/Navbar'
-
 class Home extends React.Component {
   constructor() {
     super()
@@ -15,7 +13,6 @@ class Home extends React.Component {
     // if (!this.state) return <h1>Loading...</h1>
     return (
       <main>
-        <Navbar />
         <div className="container">
           <input type="text" placeholder="search..." />
           <div className="section">
