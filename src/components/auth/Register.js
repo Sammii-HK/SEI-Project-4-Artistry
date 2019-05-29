@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 
+import Navbar from '../common/Navbar'
+
 class Register extends React.Component {
 
   constructor() {
@@ -31,72 +33,75 @@ class Register extends React.Component {
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
-              <div className="title is-3">Register</div>
-              <form onSubmit={this.handleSubmit}>
-                <div className="field">
-                  <label className="label">Username</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="username"
-                      placeholder="eg: emma"
-                      onChange={this.handleChange}
-                      value={this.state.data.username || ''}
-                    />
+      <main>
+        <Navbar />
+        <section className="section">
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half-desktop is-two-thirds-tablet">
+                <div className="title is-3">Register</div>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="field">
+                    <label className="label">Username</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        name="username"
+                        placeholder="eg: emma"
+                        onChange={this.handleChange}
+                        value={this.state.data.username || ''}
+                      />
+                    </div>
+                    {this.state.errors.username && (<div className="help is-danger">{this.state.errors.username}</div>)}
                   </div>
-                  {this.state.errors.username && (<div className="help is-danger">{this.state.errors.username}</div>)}
-                </div>
-                <div className="field">
-                  <label className="label">Email</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="email"
-                      placeholder="eg: emma@email.com"
-                      onChange={this.handleChange}
-                      value={this.state.data.email || ''}
-                    />
+                  <div className="field">
+                    <label className="label">Email</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        name="email"
+                        placeholder="eg: emma@email.com"
+                        onChange={this.handleChange}
+                        value={this.state.data.email || ''}
+                      />
+                    </div>
+                    {this.state.errors.email && (<div className="help is-danger">{this.state.errors.email}</div>)}
                   </div>
-                  {this.state.errors.email && (<div className="help is-danger">{this.state.errors.email}</div>)}
-                </div>
-                <div className="field">
-                  <label className="label">Password</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="password"
-                      type="password"
-                      placeholder="eg: ••••••••"
-                      onChange={this.handleChange}
-                      value={this.state.data.password || ''}
-                    />
+                  <div className="field">
+                    <label className="label">Password</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        name="password"
+                        type="password"
+                        placeholder="eg: ••••••••"
+                        onChange={this.handleChange}
+                        value={this.state.data.password || ''}
+                      />
+                    </div>
+                    {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
                   </div>
-                  {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
-                </div>
-                <div className="field">
-                  <label className="label">Password Confirmation</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="password_confirmation"
-                      type="password"
-                      placeholder="eg: ••••••••"
-                      onChange={this.handleChange}
-                      value={this.state.data.password_confirmation || ''}
-                    />
+                  <div className="field">
+                    <label className="label">Password Confirmation</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        name="password_confirmation"
+                        type="password"
+                        placeholder="eg: ••••••••"
+                        onChange={this.handleChange}
+                        value={this.state.data.password_confirmation || ''}
+                      />
+                    </div>
+                    {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
                   </div>
-                  {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
-                </div>
-                <button className="button is-info is-medium is-rounded">Sign Up</button>
-              </form>
+                  <button className="button is-info is-medium is-rounded">Sign Up</button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     )
   }
 }

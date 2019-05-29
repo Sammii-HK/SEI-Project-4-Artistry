@@ -2,7 +2,7 @@ import React from 'react'
 
 import Navbar from './Navbar'
 
-class Home extends React.Component {
+class Gallery extends React.Component {
   constructor() {
     super()
 
@@ -23,4 +23,4 @@ class Home extends React.Component {
 }
 
 
-export default Home
+export default Gallery

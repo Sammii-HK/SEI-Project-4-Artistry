@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 import Auth from '../../lib/Auth'
+import Navbar from '../common/Navbar'
 
 class Login extends React.Component {
 
@@ -37,47 +38,50 @@ class Login extends React.Component {
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <div className="columns is-centered">
-            <div className="column is-half-desktop is-two-thirds-tablet">
-              <div className="title is-3">Login</div>
-              <form onSubmit={this.handleSubmit}>
-                <div className="field">
-                  <label className="label">Email</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="email"
-                      placeholder="eg: emma@email.com"
-                      onChange={this.handleChange}
-                    />
+      <main>
+        <Navbar />
+        <section className="section">
+          <div className="container">
+            <div className="columns is-centered">
+              <div className="column is-half-desktop is-two-thirds-tablet">
+                <div className="title is-3">Login</div>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="field">
+                    <label className="label">Email</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        name="email"
+                        placeholder="eg: emma@email.com"
+                        onChange={this.handleChange}
+                      />
+                    </div>
                   </div>
-                </div>
-                <div className="field">
-                  <label className="label">Password</label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      name="password"
-                      type="password"
-                      placeholder="eg: ••••••••"
-                      onChange={this.handleChange}
-                    />
+                  <div className="field">
+                    <label className="label">Password</label>
+                    <div className="control">
+                      <input
+                        className="input"
+                        name="password"
+                        type="password"
+                        placeholder="eg: ••••••••"
+                        onChange={this.handleChange}
+                      />
+                    </div>
+
+                    {this.state.error && <div className="help is-danger">{this.state.error}</div>}
                   </div>
 
-                  {this.state.error && <div className="help is-danger">{this.state.error}</div>}
+                  <button className="button">Submit</button>
+                </form>
+                <div className="section has-text-centered">
+                  <p className="is-size-5">Need an account? <Link to='/register'>Register</Link> now</p>
                 </div>
-
-                <button className="button">Submit</button>
-              </form>
-              <div className="section has-text-centered">
-                <p className="is-size-5">Need an account? <Link to='/register'>Register</Link> now</p>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     )
   }
 }

@@ -1,7 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+
+import Navbar from '../common/Navbar'
 
 class Profile extends React.Component {
 
@@ -29,14 +31,11 @@ class Profile extends React.Component {
     if(!this.state.data) return null
     return(
       <main>
+        <Navbar />
         <section className="section">
           <div className="container">
             <div className="edit-form-wrapper">
               <div>
-                <Link to="/">
-                  <button className="button edit-profile">Home</button>
-                </Link>
-
                 <div className="title is-4">Profile</div>
                 <label className="label">Username</label>
                 <div>{this.state.data.username}</div>

@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+import Auth from '../../lib/Auth'
+
 class Navbar extends React.Component {
 
   constructor() {
@@ -37,12 +39,18 @@ class Navbar extends React.Component {
             {/* Everything else */}
             <div className="navbar-start">
               {/* left-hand links */}
+              {!Auth.isAuthenticated() &&<Link to='/register' className="navbar-item">Register</Link>}
+              {!Auth.isAuthenticated() &&<Link to='/register' className="navbar-item">Log in</Link>}
+              {Auth.isAuthenticated() &&
+              <Link to='/profile' className="navbar-item">Profile</Link>}
+              {Auth.isAuthenticated() &&
+              <Link to='/' className="logout navbar-item" onClick={this.logout}>Logout</Link>}
 
             </div>
             <div className="navbar-end">
               {/* right-hand links */}
-              <Link to="/gallery" className="navbar-item">Gallery</Link>
-              <Link to="/street" className="navbar-item">Street</Link>
+              <Link to='/search' className="navbar-item">Search</Link>
+              <Link to='/gallery' className="navbar-item">Gallery</Link>
             </div>
           </div>
         </div>

@@ -1,9 +1,10 @@
 import os
 from flask import abort
 from app import app
-from controllers import auth
+from controllers import auth, gallery
 
 app.register_blueprint(auth.router, url_prefix='/api')
+app.register_blueprint(gallery.router, url_prefix='/api')
 
 @app.route('/')
 @app.route('/<path:path>')
