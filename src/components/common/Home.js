@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Navbar from './Navbar'
+
 class Home extends React.Component {
   constructor() {
     super()
@@ -12,7 +14,10 @@ class Home extends React.Component {
   render() {
     // if (!this.state) return <h1>Loading...</h1>
     return (
-      <h1>Hello World!</h1>
+      <main>
+        <Navbar />
+        <h1>Hello World!</h1>
+      </main>
     )
   }
 }
