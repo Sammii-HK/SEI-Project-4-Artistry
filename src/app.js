@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
-import axios from 'axios'
+// import axios from 'axios'
 
 import Home from './components/common/Home'
 import Login from './components/auth/Login'

@@ -36,7 +36,6 @@ class UserSchema(Schema):
     email = fields.Str(required=True)
     password = fields.Str(load_only=True)
     password_confirmation = fields.Str(load_only=True)
-    sandwiches = fields.Nested('SandwichSchema', many=True, exclude=('bread', 'categories', 'user'))
 
     def generate_hash(self, plaintext):
         return bcrypt.hashpw(plaintext.encode('utf8'), bcrypt.gensalt(8)).decode('utf8')

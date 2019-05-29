@@ -15,9 +15,10 @@ class Register extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleChange(e) {
-    const data = { ...this.state.data, [e.target.name]: e.target.value }
-    this.setState({ data })
+  handleChange({target: { name, value }}) {
+    const data = {...this.state.data, [name]: value }
+    const errors = { ...this.state.errors, [name]: '' }
+    this.setState({ data, errors })
   }
 
   handleSubmit(e) {
@@ -25,7 +26,7 @@ class Register extends React.Component {
 
     axios.post('/api/register', this.state.data)
       .then(() => this.props.history.push('/login'))
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+      .catch(err => this.setState({ errors: err.response.data }))
   }
 
   render() {
@@ -44,9 +45,10 @@ class Register extends React.Component {
                       name="username"
                       placeholder="eg: emma"
                       onChange={this.handleChange}
+                      value={this.state.data.username || ''}
                     />
                   </div>
-                  {this.state.errors.username && <div className="help is-danger">{this.state.errors.username}</div>}
+                  {this.state.errors.username && (<div className="help is-danger">{this.state.errors.username}</div>)}
                 </div>
                 <div className="field">
                   <label className="label">Email</label>
@@ -56,9 +58,10 @@ class Register extends React.Component {
                       name="email"
                       placeholder="eg: emma@email.com"
                       onChange={this.handleChange}
+                      value={this.state.data.email || ''}
                     />
                   </div>
-                  {this.state.errors.email && <div className="help is-danger">{this.state.errors.email}</div>}
+                  {this.state.errors.email && (<div className="help is-danger">{this.state.errors.email}</div>)}
                 </div>
                 <div className="field">
                   <label className="label">Password</label>
@@ -69,24 +72,26 @@ class Register extends React.Component {
                       type="password"
                       placeholder="eg: ••••••••"
                       onChange={this.handleChange}
+                      value={this.state.data.password || ''}
                     />
                   </div>
-                  {this.state.errors.password && <div className="help is-danger">{this.state.errors.password}</div>}
+                  {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
                 </div>
                 <div className="field">
                   <label className="label">Password Confirmation</label>
                   <div className="control">
                     <input
                       className="input"
-                      name="passwordConfirmation"
+                      name="password_confirmation"
                       type="password"
                       placeholder="eg: ••••••••"
                       onChange={this.handleChange}
+                      value={this.state.data.password_confirmation || ''}
                     />
                   </div>
-                  {this.state.errors.passwordConfirmation && <div className="help is-danger">{this.state.errors.passwordConfirmation}</div>}
+                  {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
                 </div>
-                <button className="button">Submit</button>
+                <button className="button is-info is-medium is-rounded">Sign Up</button>
               </form>
             </div>
           </div>
