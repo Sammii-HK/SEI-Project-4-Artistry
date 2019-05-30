@@ -49,12 +49,3 @@ def login():
 def profile():
     schema = UserSchema()
     return schema.dumps(g.current_user)
-
-#
-# @router.route('/favorites', methods=['POST'])
-# @db_session
-# @secure_route
-# def favorites():
-#     schema = FavoriteSchema(many=True)
-#
-#     return schema.dumps(favorites), 200
