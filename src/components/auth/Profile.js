@@ -44,6 +44,11 @@ class Profile extends React.Component {
                 <label className="label">Email</label>
                 <div>{this.state.data.email}</div>
               </div>
+              <hr />
+              <div className="favorites">
+                <h3 className="title is-4">Favorites</h3>
+
+              </div>
             </div>
           </div>
         </section>

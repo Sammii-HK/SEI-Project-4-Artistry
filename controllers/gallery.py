@@ -4,7 +4,7 @@ from models.User import User
 from pony.orm import db_session
 # from marshmallow import ValidationError
 
-router = Blueprint('auth', __name__)
+router = Blueprint('gallery', __name__)
 
 
 @router.route('/gallery', methods=['GET'])
