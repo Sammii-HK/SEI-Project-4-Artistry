@@ -1,6 +1,5 @@
 from flask import Blueprint, request, jsonify, g
 from models.User import User, UserSchema
-# from models.Favorite import FavoriteSchema
 from app import db
 from pony.orm import db_session
 from marshmallow import ValidationError

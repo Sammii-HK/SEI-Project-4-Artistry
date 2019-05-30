@@ -6,6 +6,8 @@ from marshmallow import Schema, fields, post_load, validates_schema, ValidationE
 from app import db
 from config.environment import secret
 
+# CHEESE
+
 class User(db.Entity):
     username = Required(str, unique=True)
     email = Required(str, unique=True)
@@ -37,6 +39,8 @@ class UserSchema(Schema):
     email = fields.Str(required=True)
     password = fields.Str(load_only=True)
     password_confirmation = fields.Str(load_only=True)
+    favorites = fields.Nested('FavoriteSchema', many=True)
+
 
     def generate_hash(self, plaintext):
         return bcrypt.hashpw(plaintext.encode('utf8'), bcrypt.gensalt(8)).decode('utf8')

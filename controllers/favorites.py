@@ -13,3 +13,6 @@ def favorites():
     schema = FavoriteSchema(many=True)
 
     return schema.dumps(favorites), 200
+
+
+# MAKE A CREATE AND DELETE ROUTE FOR SAVED FAVS
