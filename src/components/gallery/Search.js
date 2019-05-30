@@ -54,8 +54,3 @@ class Search extends React.Component {
 
 
 export default Search
-
-
-// {art.principalMakers.map(artist =>
-//   <div key={artist.name} className="is-6">{artist.name}</div>
-// )}
