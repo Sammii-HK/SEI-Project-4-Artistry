@@ -1,5 +1,7 @@
-.search-container.columns {
-  height: 250px;
+.search-container {
+  .columns {
+    height: 250px;
+  }
 }
 
 .column {
@@ -32,4 +34,14 @@
   width: 50px;
   height: 50px;
   margin: 20px 0;
+}
+
+.fav-icon {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+
+  :hover {
+    color: #463257;
+  }
 }

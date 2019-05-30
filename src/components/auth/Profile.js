@@ -28,6 +28,7 @@ class Profile extends React.Component {
 
 
   render(){
+    console.log('profile', this.state.data)
     if(!this.state.data) return null
     return(
       <main>

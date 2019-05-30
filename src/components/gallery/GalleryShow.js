@@ -24,7 +24,8 @@ class GalleryShow extends React.Component {
 
   render() {
     console.log(this.state.data)
-    // console.log(this.state.data.classification.people)
+    // console.log(this.state.data[1].classification)
+    // console.log(this.state.data.dimensions)
     if (!this.state.data) return <h1>Loading...</h1>
     return (
       <main>
@@ -32,6 +33,9 @@ class GalleryShow extends React.Component {
         <div className="container">
           <input type="text" placeholder="search..." />
           <div className="section">
+            <div className="fav-icon">
+              <i className="fas fa-heart fa-3x" aria-hidden="true"></i>
+            </div>
             <div className="columns is-multiline is-centered">
               <div className="column is-8 image-col">
                 <div
@@ -44,6 +48,10 @@ class GalleryShow extends React.Component {
                 <div className="subtitle is-4 has-text-right">{this.state.data.principalOrFirstMaker}</div>
                 <p className="is-6">{this.state.data.plaqueDescriptionEnglish}</p>
                 <hr />
+
+                <p>Presented: {this.state.data.dating.presentingDate}</p>
+
+                <hr />
                 <p className="is-6">{this.state.data.physicalMedium}</p>
 
                 <div className="columns is-multiline is-mobile">
@@ -55,10 +63,42 @@ class GalleryShow extends React.Component {
                       </div>
                     </div>
                   )}
-
                 </div>
 
+                <div className="columns is-multiline is-mobile">
+                  {this.state.data.materials.map(material =>
+                    <div key={material} className="column">
+                      <p className="has-text-centered">{material}</p>
+                    </div>
+                  )}
+                </div>
+
+                <p className="has-text-centered">{this.state.data.location}</p>
+
                 <hr />
+
+                {// <div className="columns is-multiline is-mobile">
+                //   {this.state.data.dimensions.map(dimension =>
+                //     <div key={dimension.value, dimension.value, dimension.unit} className="column">
+                //       <div className="dimension-box">
+                //         <p>{dimension}</p>
+                //       </div>
+                //     </div>
+                //   )}
+                // </div>
+                }
+
+                <div className="columns is-multiline is-mobile">
+                  {this.state.data.classification.people.map(person =>
+                    <div key={person} className="column">
+                      <p>{person}</p>
+                    </div>
+                  )}
+                </div>
+
+
+
+
                 {
                 // <div className="column">
                 //   <p>{this.state.data.classification.people}</p>
@@ -66,13 +106,15 @@ class GalleryShow extends React.Component {
                 }
 
                 {
+
                 // <div className="columns is-multiline is-mobile">
-                //     <div key={person[]} className="column">
-                //       <div className="person-box">
-                //         <p>{person}</p>
+                //     {this.state.data.classification.people.map(person =>
+                //       <div key={person} className="column">
+                //         <div className="person-box">
+                //           <p>{person}</p>
+                //         </div>
                 //       </div>
-                //     </div>
-                //   )}
+                //     )}
                 // </div>
                 }
 
