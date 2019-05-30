@@ -28,7 +28,7 @@ class Search extends React.Component {
     if (!this.state) return <h1>Loading...</h1>
     return (
       <main>
-        <div className="container search-container">
+        <div className="container images-container">
           <input type="text" placeholder="search..." />
           <div className="section">
             <div className="columns is-mobile is-multiline">

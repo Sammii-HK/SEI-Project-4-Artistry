@@ -47,7 +47,7 @@ class Profile extends React.Component {
                 <div>{this.state.data.email}</div>
               </div>
               <hr />
-              <div className="favorites">
+              <div className="favorites images-container">
                 <h3 className="title is-4">Favorites</h3>
 
                 {this.state.data.favorites &&
@@ -56,7 +56,7 @@ class Profile extends React.Component {
                       <div key={favorite.object_number} className="column is-3-desktop is-6-tablet is-half-mobile">
                         <Link to={`/gallery/${favorite.object_number}`}>
                           <div
-                            className="favorite-image"
+                            className="art-image"
                             style={{ backgroundImage: `url(${favorite.image})` }} >
                             <div className="subtitle is-6">{favorite.title}</div>
                           </div>
