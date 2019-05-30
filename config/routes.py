@@ -1,7 +1,7 @@
 import os
 from flask import abort
 from app import app
-from controllers import auth, rijksmuseum
+from controllers import auth, rijksmuseum, favorites
 
 app.register_blueprint(auth.router, url_prefix='/api')
 app.register_blueprint(rijksmuseum.router, url_prefix='/api')

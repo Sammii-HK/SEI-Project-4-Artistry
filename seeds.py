@@ -18,7 +18,7 @@ with db_session():
 
     Favorite(
         title="Night's Watch",
-        image=Required(str),
+        image="https://lh3.googleusercontent.com/J-mxAE7CPu-DXIOx4QKBtb0GC4ud37da1QK7CzbTIDswmvZHXhLm4Tv2-1H3iBXJWAW_bHm7dMl3j5wv_XiWAg55VOM=s0",
         object_number="SK-C-5",
         user=sammii
     )
