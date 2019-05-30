@@ -13,6 +13,15 @@ class Search extends React.Component {
     this.getArt = this.getArt.bind(this)
   }
 
+  // SEARCH PARAMS I WANT TO SEARCH BY
+  // $.artObject.title
+  // $.artObject.colors
+  // $.artObject.principalMaker
+  // $.artObject.dating.presentingDate
+  // $.artObject.objectCollection
+  // $.artObject.materials
+  // $.artObject.classification.iconClassDescription
+
   getArt() {
     axios.get('/api/rijksmuseum/collection')
       .then(res => this.setState({ data: res.data.artObjects }))

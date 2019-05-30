@@ -10,13 +10,18 @@ class GalleryShow extends React.Component {
     this.state = {
       data: null
     }
+
+    this.getArtwork = this.getArtwork.bind(this)
   }
 
-  // MAKE AXIOS REQUEST TO FAVORITES ON CLICK?
   getArtwork() {
-    axios.post('/api/favorites')
-      .then(res => this.setState({ data: res.data }))
+    axios.post(`/api/favorites/${this.props.match.params.id}`)
+      .then(res => this.setState({ data: res.data.artObject }))
       .catch(err => console.error(err))
+    console.log('getArtwork() this.state.data', this.state.data)
+    console.log('getArtwork() this.state.data.objectNumber', this.state.data.objectNumber)
+    console.log('getArtwork() this.state.data.title', this.state.data.title)
+    console.log('getArtwork() this.state.data.webImage.url', this.state.data.webImage.url)
   }
 
   // HANDLE DELETE FROM BORED OF THRONES
@@ -45,7 +50,7 @@ class GalleryShow extends React.Component {
   }
 
   render() {
-    console.log(this.state.data)
+    console.log('gallery this.state.data', this.state.data)
     if (!this.state.data) return <h1>Loading...</h1>
     return (
       <main>
