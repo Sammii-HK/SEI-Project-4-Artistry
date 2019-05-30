@@ -12,6 +12,28 @@ class GalleryShow extends React.Component {
     }
   }
 
+  // MAKE AXIOS REQUEST TO FAVORITES ON CLICK?
+  getArtwork() {
+    axios.post('/api/favorites')
+      .then(res => this.setState({ data: res.data }))
+      .catch(err => console.error(err))
+  }
+
+  // HANDLE DELETE FROM BORED OF THRONES
+  // handleDelete() {
+  //   const token = Auth.getToken()
+  //   axios.delete(`/api/characters/${this.props.match.params.id}`, {
+  //     headers: { 'Authorization': `Bearer ${token}` }
+  //   })
+  //     .then(() => this.props.history.push('/characters'))
+  // }
+
+  // THEN REFERENCE THE DELETE FUNCTION ON A BUTTON
+  // <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
+
+  // SET STATE FOR FAV, IF TRUTHY THEN DISPLAY A CLOSE BUTTON
+  // IF STATE IS FALSE, THEN REMOVE CLOSE AND SHOW FAV BUTTON
+
   getArtItem() {
     axios.get(`/api/rijksmuseum/collection/${this.props.match.params.id}`)
       .then(res => this.setState({ data: res.data.artObject }))
@@ -32,7 +54,10 @@ class GalleryShow extends React.Component {
           <input type="text" placeholder="search..." />
           <div className="section">
             <div className="fav-icon">
-              <i className="fas fa-heart fa-3x" aria-hidden="true"></i>
+              <i
+                className="fas fa-heart fa-3x"
+                aria-hidden="true"
+                onClick={this.getArtwork}></i>
             </div>
             <div className="columns is-multiline is-centered">
               <div className="column is-8 image-col">

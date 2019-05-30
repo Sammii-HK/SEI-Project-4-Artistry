@@ -1,5 +1,5 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 
@@ -12,7 +12,7 @@ class Profile extends React.Component {
 
     this.state = {
       data: {},
-      favorites: {}
+      favorites: []
     }
   }
 
@@ -29,8 +29,9 @@ class Profile extends React.Component {
 
 
   render(){
-    console.log('profile', this.state.data)
-    if(!this.state.data) return null
+    console.log('profile this.state.data', this.state.data)
+    console.log('profile this.state.data.favorites', this.state.data.favorites)
+    if(!this.state.data) return <h1>Loading...</h1>
     return(
       <main>
         <Navbar />
@@ -49,6 +50,22 @@ class Profile extends React.Component {
               <div className="favorites">
                 <h3 className="title is-4">Favorites</h3>
 
+                {this.state.data.favorites &&
+                  <div className="columns is-mobile is-multiline">
+                    {this.state.data.favorites.map(favorite =>
+                      <div key={favorite.object_number} className="column is-3-desktop is-6-tablet is-half-mobile">
+                        <Link to={`/gallery/${favorite.object_number}`}>
+                          <div
+                            className="favorite-image"
+                            style={{ backgroundImage: `url(${favorite.image})` }} >
+                            <div className="subtitle is-6">{favorite.title}</div>
+                          </div>
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                }
+
               </div>
             </div>
           </div>
@@ -60,3 +77,33 @@ class Profile extends React.Component {
 }
 
 export default Profile
+
+
+// <div className="columns is-mobile is-multiline">
+//   {this.state.data.favorites.map(favorite =>
+//     <div key={favorite.objectNumber} className="column is-3-desktop is-6-tablet is-half-mobile">
+//       <Link to={`/gallery/${favorite.objectNumber}`}>
+//         <div
+//           className="favorite-image"
+//           style={{ backgroundImage: `url(${favorite.webImage.url})` }} >
+//           <div className="subtitle is-6">{favorite.title}</div>
+//         </div>
+//       </Link>
+//     </div>
+//   )}
+// </div>
+
+
+// <div className="columns is-mobile is-multiline">
+//   {this.state.data.map(favorite =>
+//     <div key={favorite.objectNumber} className="column is-3-desktop is-6-tablet is-half-mobile">
+//       <Link to={`/gallery/${favorite.objectNumber}`}>
+//         <div
+//           className="favorite-image"
+//           style={{ backgroundImage: `url(${favorite.webImage.url})` }} >
+//           <div className="subtitle is-6">{favorite.title}</div>
+//         </div>
+//       </Link>
+//     </div>
+//   )}
+// </div>

@@ -6,8 +6,6 @@ from app import db
 # make POST request to make new fav with ob id and image
 # create new fav model and add current user to fav
 
-# CHEESECOMMENT
-
 class Favorite(db.Entity):
     title = Required(str, unique=True)
     image = Required(str)
