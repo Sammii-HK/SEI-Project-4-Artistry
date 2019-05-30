@@ -7,6 +7,7 @@ import Home from './components/common/Home'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
 import Profile from './components/auth/Profile'
+import GalleryShow from './components/gallery/GalleryShow'
 
 import 'bulma'
 
@@ -22,6 +23,7 @@ class App extends React.Component {
           <Route path="/profile" component={Profile} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/gallery/:id" component={GalleryShow} />
           <Route exact path="/" component={Home} />
         </Switch>
       </Router>
