@@ -16,9 +16,9 @@ class Search extends React.Component {
         <div className="container">
           <input type="text" placeholder="search..." />
           <div className="section">
-            <div className="columns is-mobile is-multiline">
+            <div className="columns is-multiline">
               {this.props.data.map(art =>
-                <div key={art.id} className="column is-3 is-6-mobile">
+                <div key={art.id} className="column is-3">
                   <div className="subtitle is-6">{art.title}</div>
                   <div className="is-6">{art.principalOrFirstMaker}</div>
                   <p className="is-6">{art.plaqueDescriptionEnglish}</p>

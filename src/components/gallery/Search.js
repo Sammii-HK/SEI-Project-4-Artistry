@@ -19,8 +19,8 @@ class Search extends React.Component {
           <div className="section">
             <div className="columns is-mobile is-multiline">
               {this.props.data.map(art =>
-                <div key={art.id} className="column is-3 is-half-mobile">
-                  <Link to={`/art/${art.id}`}>
+                <div key={art.objectNumber} className="column is-3 is-half-mobile">
+                  <Link to={`/rijksmuseum/collection/${art.objectNumber}`}>
                     <div
                       className="art-image"
                       style={{ backgroundImage: `url(${art.webImage.url})` }} >

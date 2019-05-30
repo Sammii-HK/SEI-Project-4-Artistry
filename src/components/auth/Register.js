@@ -9,7 +9,7 @@ class Register extends React.Component {
     super()
 
     this.state = {
-      data: {},
+      userData: {},
       errors: {}
     }
 
@@ -18,17 +18,17 @@ class Register extends React.Component {
   }
 
   handleChange({target: { name, value }}) {
-    const data = {...this.state.data, [name]: value }
+    const userData = {...this.state.userData, [name]: value }
     const errors = { ...this.state.errors, [name]: '' }
-    this.setState({ data, errors })
+    this.setState({ userData, errors })
   }
 
   handleSubmit(e) {
     e.preventDefault()
 
-    axios.post('/api/register', this.state.data)
+    axios.post('/api/register', this.state.userData)
       .then(() => this.props.history.push('/login'))
-      .catch(err => this.setState({ errors: err.response.data.errors }))
+      .catch(err => this.setState({ errors: err.response.userData.errors }))
   }
 
   render() {
@@ -49,7 +49,7 @@ class Register extends React.Component {
                         name="username"
                         placeholder="eg: emma"
                         onChange={this.handleChange}
-                        value={this.state.data.username || ''}
+                        value={this.state.userData.username || ''}
                       />
                     </div>
                     {this.state.errors.username && (<div className="help is-danger">{this.state.errors.username}</div>)}
@@ -62,7 +62,7 @@ class Register extends React.Component {
                         name="email"
                         placeholder="eg: emma@email.com"
                         onChange={this.handleChange}
-                        value={this.state.data.email || ''}
+                        value={this.state.userData.email || ''}
                       />
                     </div>
                     {this.state.errors.email && (<div className="help is-danger">{this.state.errors.email}</div>)}
@@ -76,7 +76,7 @@ class Register extends React.Component {
                         type="password"
                         placeholder="eg: ••••••••"
                         onChange={this.handleChange}
-                        value={this.state.data.password || ''}
+                        value={this.state.userData.password || ''}
                       />
                     </div>
                     {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
@@ -90,7 +90,7 @@ class Register extends React.Component {
                         type="password"
                         placeholder="eg: ••••••••"
                         onChange={this.handleChange}
-                        value={this.state.data.password_confirmation || ''}
+                        value={this.state.userData.password_confirmation || ''}
                       />
                     </div>
                     {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}

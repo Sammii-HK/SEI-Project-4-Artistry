@@ -3,7 +3,7 @@ from models.User import User, UserSchema
 from app import db
 from pony.orm import db_session
 from marshmallow import ValidationError
-# from lib.secure_route import secure_route
+from lib.secure_route import secure_route
 
 router = Blueprint('auth', __name__)
 
@@ -42,14 +42,16 @@ def login():
         'token': user.generate_token()
     })
 
-# @router.route('/profile', methods=['GET'])
-# @db_session
-# @secure_route
-# def profile():
-#
-#     data = request.get_json()
-#     user = User(**data)
-#
-#     return jsonify({
-#         'message': f'Hello {user.username}'
-#     })
+@router.route('/profile', methods=['GET'])
+@db_session
+@secure_route
+def profile():
+    data = request.get_json()
+    user = User(**data)
+
+    if not user or not user.is_password_valid(data.get('password')):
+        return jsonify({'message': 'Unauthorized'}), 401
+
+    return jsonify({
+        'message': f'Hello {user.username}'
+    })
