@@ -24,7 +24,6 @@ class Search extends React.Component {
   }
 
   render() {
-    console.log('search props.data', this.props.data)
     console.log('search state.data', this.state.data)
     if (!this.state) return <h1>Loading...</h1>
     return (

@@ -24,8 +24,6 @@ class GalleryShow extends React.Component {
 
   render() {
     console.log(this.state.data)
-    // console.log(this.state.data[1].classification)
-    // console.log(this.state.data.dimensions)
     if (!this.state.data) return <h1>Loading...</h1>
     return (
       <main>

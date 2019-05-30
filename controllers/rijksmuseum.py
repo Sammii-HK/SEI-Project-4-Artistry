@@ -1,6 +1,4 @@
 import os
-# import codecs
-# from app import db
 import requests
 from flask import Blueprint, Response
 
@@ -12,7 +10,8 @@ def collection():
     api_key = os.getenv('RIJKS_API_KEY')
     url = 'https://www.rijksmuseum.nl/api/en/collection'
     params = {
-        'key': api_key
+        'key': api_key,
+        'ps': '48'
         }
     req = requests.get(url, params=params)
 

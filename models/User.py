@@ -1,15 +1,28 @@
 from datetime import datetime, timedelta
 import bcrypt
 import jwt
-from pony.orm import Required
+from pony.orm import Required, Set
 from marshmallow import Schema, fields, post_load, validates_schema, ValidationError
 from app import db
 from config.environment import secret
+
+
+# class Favorites(db.Entity):
+#     object_number = Required(str, unique=True)
+#
+#
+# class FavoritesSchema(Schema):
+#     id = fields.Int(dump_only=True)
+
+    # make POST request to make new fav with ob id and im
+    # create new fav model and add current user to fav
+
 
 class User(db.Entity):
     username = Required(str, unique=True)
     email = Required(str, unique=True)
     password_hash = Required(str)
+    # favorites = Set('Favorites')
 
     def is_password_valid(self, plaintext):
         return bcrypt.checkpw(plaintext.encode('utf8'), self.password_hash.encode('utf8'))

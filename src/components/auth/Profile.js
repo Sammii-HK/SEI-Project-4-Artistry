@@ -11,7 +11,8 @@ class Profile extends React.Component {
     super()
 
     this.state = {
-      data: {}
+      data: {},
+      favorites: {}
     }
   }
 
