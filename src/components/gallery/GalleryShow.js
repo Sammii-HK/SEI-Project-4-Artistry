@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import Auth from '../../lib/Auth'
 
 import Navbar from '../common/Navbar'
 
@@ -11,18 +12,36 @@ class GalleryShow extends React.Component {
       data: null
     }
 
-    this.getArtwork = this.getArtwork.bind(this)
+    this.handleFavourite = this.handleFavourite.bind(this)
   }
 
-  getArtwork() {
-    axios.post(`/api/favorites/${this.props.match.params.id}`)
+
+  handleFavourite() {
+    const webImage = this.state.data.webImage.url
+    const { objectNumber, title } = this.state.data
+    const favorites = { object_number: objectNumber, title, image: webImage }
+    console.log('handleFav', favorites)
+    axios.post('/api/favorites', favorites, {
+      headers: { Authorization: `Bearer ${Auth.getToken()}`}
+    })
       .then(res => this.setState({ data: res.data.artObject }))
       .catch(err => console.error(err))
-    console.log('getArtwork() this.state.data', this.state.data)
-    console.log('getArtwork() this.state.data.objectNumber', this.state.data.objectNumber)
-    console.log('getArtwork() this.state.data.title', this.state.data.title)
-    console.log('getArtwork() this.state.data.webImage.url', this.state.data.webImage.url)
   }
+
+  // handleFavourite() {
+  //
+  //   const { objectNumber, title, webImage: { url: image } } = this.state
+  //   const data = { object_number: objectNumber, title, image }
+  //
+  //   axios.post('/api/favorites', data, {
+  //     headers: { Authorization: `Bearer ${Auth.getToken()}`}
+  //   })
+  //     .then(res => this.setState({ data: res.data.artObject }))
+  //     .catch(err => console.error(err))
+  // }
+
+  // const { objectNumber, title, webImage: { url: image } } = this.state
+  // const data = { object_number: objectNumber, title, image }
 
   // HANDLE DELETE FROM BORED OF THRONES
   // handleDelete() {
@@ -62,7 +81,7 @@ class GalleryShow extends React.Component {
               <i
                 className="fas fa-heart fa-3x"
                 aria-hidden="true"
-                onClick={this.getArtwork}></i>
+                onClick={this.handleFavourite}></i>
             </div>
             <div className="columns is-multiline is-centered">
               <div className="column is-8 image-col">
