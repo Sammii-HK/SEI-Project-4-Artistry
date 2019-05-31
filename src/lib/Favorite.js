@@ -1,31 +1,33 @@
 class Favorite {
 
   static setFavorites(favorites) {
-    this._favorites = favorites
+    localStorage.setItem('favorites', JSON.stringify(favorites))
   }
 
   static addFavorite(favorite) {
-    this._favorites = this._favorites || []
-    this._favorites.push(favorite)
+    const favorites = this.getFavorites()
+    favorites.push(favorite)
+    this.setFavorites(favorites)
   }
 
   static removeFavorite(favorite) {
-    const index = this._favorites.findIndex(fav => fav.object_number === favorite.object_number)
-    this._favorites.splice(index, 1)
+    const favorites = this.getFavorites()
+    const index = favorites.findIndex(fav => fav.object_number === favorite.object_number)
+    favorites.splice(index, 1)
+    this.setFavorites(favorites)
   }
 
   static getFavorites() {
-    return this._favorites
+    return JSON.parse(localStorage.getItem('favorites'))
   }
 
   static isFavorite(favorite) {
-    this._favorites = this._favorites || []
-    return this._favorites.find(fav => fav.object_number === favorite.object_number)
+    const favorites = this.getFavorites()
+    return favorites.find(fav => fav.object_number === favorite.object_number)
   }
 
-  // does this clear all of the favorites?
   static clearFavorites() {
-    this._favorites = null
+    localStorage.removeItem('favorites')
   }
 
 }

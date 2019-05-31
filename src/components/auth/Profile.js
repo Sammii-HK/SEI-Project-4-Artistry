@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import Favorite from '../../lib/Favorite'
 
 import Navbar from '../common/Navbar'
 
@@ -12,7 +13,7 @@ class Profile extends React.Component {
 
     this.state = {
       data: {},
-      favorites: []
+      favorites: Favorite.getFavorites()
     }
   }
 

@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, g
+from flask import Blueprint, request, jsonify, g, abort
 from models.Favorite import Favorite, FavoriteSchema
 from app import db
 from pony.orm import db_session

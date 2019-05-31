@@ -31,8 +31,8 @@ class Login extends React.Component {
     axios.post('/api/login', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
-        Favorite.setFavorites()
-        console.log(res.data.token)
+        console.log('token', res.data.token)
+        Favorite.setFavorites(res.data.favorites)
         this.props.history.push('/profile')
       })
       .catch(err => console.log(err))

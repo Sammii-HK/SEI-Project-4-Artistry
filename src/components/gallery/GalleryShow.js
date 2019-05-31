@@ -19,13 +19,13 @@ class GalleryShow extends React.Component {
 
 
   handleFavourite() {
-    // e.preventDefault()
     const image = this.state.data.webImage.url
     const { objectNumber, title } = this.state.data
     const favorite = { object_number: objectNumber, title, image }
 
     if(Favorite.isFavorite(favorite)) {
       // remove the favorite
+      Favorite.removeFavorite(favorite)
       console.log('Remove favorite... TODO')
     } else {
       // add the favorite
@@ -34,26 +34,9 @@ class GalleryShow extends React.Component {
       })
         .then(res => Favorite.addFavorite(res.data))
         .catch(err => console.error(err))
+      console.log('Added favorite')
     }
   }
-
-  // Flash.setMessage('success', res.data.message)
-  // this.props.history.push('/characters')
-
-  // HANDLE DELETE FROM BORED OF THRONES
-  // handleDelete() {
-  //   const token = Auth.getToken()
-  //   axios.delete(`/api/characters/${this.props.match.params.id}`, {
-  //     headers: { 'Authorization': `Bearer ${token}` }
-  //   })
-  //     .then(() => this.props.history.push('/characters'))
-  // }
-
-  // THEN REFERENCE THE DELETE FUNCTION ON A BUTTON
-  // <button className="button is-danger" onClick={this.handleDelete}>Delete</button>
-
-  // SET STATE FOR FAV, IF TRUTHY THEN DISPLAY A CLOSE BUTTON
-  // IF STATE IS FALSE, THEN REMOVE CLOSE AND SHOW FAV BUTTON
 
   getArtItem() {
     axios.get(`/api/rijksmuseum/collection/${this.props.match.params.id}`)

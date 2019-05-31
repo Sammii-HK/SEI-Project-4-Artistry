@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import Auth from '../../lib/Auth'
+import Favorite from '../../lib/Favorite'
 
 class Navbar extends React.Component {
 
@@ -22,9 +23,9 @@ class Navbar extends React.Component {
 
   logout() {
     Auth.removeToken()
+    Favorite.clearFavorites()
     window.location.reload()
     this.props.history.push('/')
-    // this.props.updatePage()
   }
 
   render() {
