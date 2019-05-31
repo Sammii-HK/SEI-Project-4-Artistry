@@ -17,14 +17,14 @@ class GalleryShow extends React.Component {
 
 
   handleFavourite() {
+    // e.preventDefault()
     const image = this.state.data.webImage.url
     const { objectNumber, title } = this.state.data
     const favorites = { object_number: objectNumber, title, image }
-    console.log('handleFav', favorites)
+
     axios.post('/api/favorites', favorites, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
     })
-      .then(res => this.setState({ data: res.data.artObject }))
       .catch(err => console.error(err))
   }
 
@@ -52,6 +52,10 @@ class GalleryShow extends React.Component {
   componentDidMount() {
     this.getArtItem()
   }
+  //
+  // componentDidUpdate() {
+  //   this.getArtItem()
+  // }
 
   render() {
     console.log('gallery this.state.data', this.state.data)

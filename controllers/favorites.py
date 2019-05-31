@@ -1,8 +1,6 @@
-import os
-from flask import Blueprint, request, jsonify, g, Response
+from flask import Blueprint, request, jsonify, g
 from models.Favorite import Favorite, FavoriteSchema
 from app import db
-import requests
 from pony.orm import db_session
 from marshmallow import ValidationError
 from lib.secure_route import secure_route
