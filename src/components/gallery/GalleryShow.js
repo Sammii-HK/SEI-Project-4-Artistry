@@ -17,9 +17,9 @@ class GalleryShow extends React.Component {
 
 
   handleFavourite() {
-    const webImage = this.state.data.webImage.url
+    const image = this.state.data.webImage.url
     const { objectNumber, title } = this.state.data
-    const favorites = { object_number: objectNumber, title, image: webImage }
+    const favorites = { object_number: objectNumber, title, image }
     console.log('handleFav', favorites)
     axios.post('/api/favorites', favorites, {
       headers: { Authorization: `Bearer ${Auth.getToken()}`}
@@ -27,21 +27,6 @@ class GalleryShow extends React.Component {
       .then(res => this.setState({ data: res.data.artObject }))
       .catch(err => console.error(err))
   }
-
-  // handleFavourite() {
-  //
-  //   const { objectNumber, title, webImage: { url: image } } = this.state
-  //   const data = { object_number: objectNumber, title, image }
-  //
-  //   axios.post('/api/favorites', data, {
-  //     headers: { Authorization: `Bearer ${Auth.getToken()}`}
-  //   })
-  //     .then(res => this.setState({ data: res.data.artObject }))
-  //     .catch(err => console.error(err))
-  // }
-
-  // const { objectNumber, title, webImage: { url: image } } = this.state
-  // const data = { object_number: objectNumber, title, image }
 
   // HANDLE DELETE FROM BORED OF THRONES
   // handleDelete() {
