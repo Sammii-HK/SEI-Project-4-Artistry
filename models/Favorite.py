@@ -3,9 +3,6 @@ from marshmallow import Schema, fields, validates_schema, ValidationError
 
 from app import db
 
-# make POST request to make new fav with ob id and image
-# create new fav model and add current user to fav
-
 class Favorite(db.Entity):
     title = Required(str, unique=True)
     image = Required(str)
