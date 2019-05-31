@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Link } from 'react-router-dom'
 
 import Auth from '../../lib/Auth'
+import Favorite from '../../lib/Favorite'
 import Navbar from '../common/Navbar'
 
 class Login extends React.Component {
@@ -30,6 +31,7 @@ class Login extends React.Component {
     axios.post('/api/login', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
+        Favorite.setFavorites()
         console.log(res.data.token)
         this.props.history.push('/profile')
       })

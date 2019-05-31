@@ -23,12 +23,9 @@ class Navbar extends React.Component {
   logout() {
     Auth.removeToken()
     window.location.reload()
+    this.props.history.push('/')
     // this.props.updatePage()
   }
-
-  // updatePage(){
-  //   this.forceUpdate()
-  // }
 
   render() {
     return (

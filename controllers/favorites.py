@@ -34,15 +34,15 @@ def create():
     return schema.dumps(favorite)
 
 
-# @router.route('/favorites/<int:favorite_id>', methods=['DELETE'])
-# @db_session
-# def delete(favorite_id):
-#     favorite = Favorite.get(id=favorite_id)
-#
-#     if not favorite:
-#         abort(404)
-#
-#     favorite.delete()
-#     db.commit()
-#
-#     return '', 204
+@router.route('/favorites/<int:favorite_id>', methods=['DELETE'])
+@db_session
+def delete(favorite_id):
+    favorite = Favorite.get(id=favorite_id)
+
+    if not favorite:
+        abort(404)
+
+    favorite.delete()
+    db.commit()
+
+    return '', 204

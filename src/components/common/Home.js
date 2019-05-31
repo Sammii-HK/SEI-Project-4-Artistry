@@ -2,6 +2,7 @@ import React from 'react'
 
 import Navbar from './Navbar'
 import Search from '../gallery/Search'
+// import Profile from '../gallery/Profile'
 
 class Home extends React.Component {
   constructor() {

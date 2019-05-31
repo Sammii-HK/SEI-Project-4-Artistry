@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import Favorite from '../../lib/Favorite'
 
 import Navbar from '../common/Navbar'
 
@@ -9,7 +10,8 @@ class GalleryShow extends React.Component {
     super(props)
 
     this.state = {
-      data: null
+      data: null,
+      favorites: null
     }
 
     this.handleFavourite = this.handleFavourite.bind(this)
@@ -20,13 +22,23 @@ class GalleryShow extends React.Component {
     // e.preventDefault()
     const image = this.state.data.webImage.url
     const { objectNumber, title } = this.state.data
-    const favorites = { object_number: objectNumber, title, image }
+    const favorite = { object_number: objectNumber, title, image }
 
-    axios.post('/api/favorites', favorites, {
-      headers: { Authorization: `Bearer ${Auth.getToken()}`}
-    })
-      .catch(err => console.error(err))
+    if(Favorite.isFavorite(favorite)) {
+      // remove the favorite
+      console.log('Remove favorite... TODO')
+    } else {
+      // add the favorite
+      axios.post('/api/favorites', favorite, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}`}
+      })
+        .then(res => Favorite.addFavorite(res.data))
+        .catch(err => console.error(err))
+    }
   }
+
+  // Flash.setMessage('success', res.data.message)
+  // this.props.history.push('/characters')
 
   // HANDLE DELETE FROM BORED OF THRONES
   // handleDelete() {
@@ -52,13 +64,10 @@ class GalleryShow extends React.Component {
   componentDidMount() {
     this.getArtItem()
   }
-  //
-  // componentDidUpdate() {
-  //   this.getArtItem()
-  // }
 
   render() {
     console.log('gallery this.state.data', this.state.data)
+    // console.log('gallery this.state.data.user', this.state.data.user)
     if (!this.state.data) return <h1>Loading...</h1>
     return (
       <main>
@@ -68,7 +77,7 @@ class GalleryShow extends React.Component {
           <div className="section">
             <div className="fav-icon">
               <i
-                className="fas fa-heart fa-3x"
+                className={`${Favorite.isFavorite(this.state.data) ? 'fas fa-heart fa-3x' : 'fa fa-heart fa-3x'}`}
                 aria-hidden="true"
                 onClick={this.handleFavourite}></i>
             </div>
