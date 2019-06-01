@@ -43,6 +43,8 @@ def login():
         'message': f'Welcome back {user.username}',
         'token': user.generate_token(),
         'favorites': FavoriteSchema(many=True).dump(user.favorites)
+
+        # for favorites in user
     })
 
 @router.route('/profile', methods=['GET'])

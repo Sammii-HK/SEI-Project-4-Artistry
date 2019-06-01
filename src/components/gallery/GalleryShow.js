@@ -23,7 +23,20 @@ class GalleryShow extends React.Component {
     const { objectNumber, title } = this.state.data
     const favorite = { object_number: objectNumber, title, image }
 
-    if(Favorite.isFavorite(favorite)) {
+    // compoare localStorage.favorites[i] with this.state.data.objectNumber
+
+    // when the button is clicked, it is removing the data from every favorite index item so it is null
+
+    // CONSOLE LOG
+    // gallery this.state.data.objectNumber SK-A-372
+    // Favorite.js:33 FIND/IS favorite.object_number undefined
+    // Favorite.js:33 FIND/IS favorite.object_number SK-A-372
+    // Favorite.js:17 REMOVE favorite.object_number SK-A-372
+    // Favorite.js:19 REMOVE-INDEX index 7
+    // GalleryShow.js:31 Remove favorite... TODO
+    // All items now null in localStorage
+
+    if(Favorite.isFavorite(favorite) === this.state.data.objectNumber) {
       // remove the favorite
       Favorite.removeFavorite(favorite)
       console.log('Remove favorite... TODO')
@@ -51,7 +64,7 @@ class GalleryShow extends React.Component {
   render() {
     if (!this.state.data) return <h1>Loading...</h1>
 
-    console.log('gallery this.state.data', this.state.data.objectNumber)
+    console.log('gallery this.state.data.objectNumber', this.state.data.objectNumber)
     // console.log('gallery this.state.data.user', this.state.data.user)
 
     return (
