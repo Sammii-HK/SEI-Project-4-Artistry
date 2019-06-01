@@ -24,8 +24,6 @@ class GalleryShow extends React.Component {
     const { objectNumber, title } = this.state.data
     const favorite = { objectNumber: objectNumber, title, image }
 
-    // compoare localStorage.favorites[i] with this.state.data.objectNumber
-
     // when the button is clicked, it is removing the data from every favorite index item so it is null
 
     // CONSOLE LOG
@@ -39,22 +37,18 @@ class GalleryShow extends React.Component {
 
     if(Favorite.isFavorite(favorite)) {
       // remove the favorite
-      Favorite.removeFavorite(favorite)
-      console.log('Remove favorite... TODO')
       axios.delete(`/api/favorites/${this.props.match.params.id}`, favorite, {
         headers: { Authorization: `Bearer ${Auth.getToken()}`}
       })
-        .then(res => Favorite.deleteFavorite(res.data))
-        .catch(err => console.error(err))
+        .then(res => Favorite.removeFavorite(res.data))
+        .then(() => this.setState({ data: this.state.data }))
     } else {
-      console.log(favorite)
       // add the favorite
       axios.post('/api/favorites', favorite, {
         headers: { Authorization: `Bearer ${Auth.getToken()}`}
       })
         .then(res => Favorite.addFavorite(res.data))
-        .catch(err => console.error(err))
-      console.log('Added favorite')
+        .then(() => this.setState({ data: this.state.data }))
     }
   }
 

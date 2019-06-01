@@ -39,10 +39,12 @@ def login():
     if not user or not user.is_password_valid(data.get('password')):
         return jsonify({'message': 'Unauthorized'}), 401
 
+    favorites = [fav['objectNumber'] for fav in FavoriteSchema(many=True).dump(user.favorites)]
+
     return jsonify({
         'message': f'Welcome back {user.username}',
         'token': user.generate_token(),
-        'favorites': FavoriteSchema(many=True).dump(user.favorites)
+        'favorites': favorites
 
         # for favorites in user
     })

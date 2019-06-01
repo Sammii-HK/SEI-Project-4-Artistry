@@ -1,9 +1,7 @@
 class Favorite {
 
   static setFavorites(favorites) {
-    const data = favorites.map(fav => fav.objectNumber)
-    console.log('SET data (favorites)', data)
-    localStorage.setItem('favorites', JSON.stringify(data))
+    localStorage.setItem('favorites', JSON.stringify(favorites))
   }
 
   static addFavorite(favorite) {
