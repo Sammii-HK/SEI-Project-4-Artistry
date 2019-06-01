@@ -27,6 +27,10 @@ class Profile extends React.Component {
       .then(res => this.setState({ data: res.data }))
       .catch(err => console.error(err))
   }
+  //
+  // componentDidUpdate() {
+  //   this.setState({ favorites: Favorite.getFavorites() })
+  // }
 
 
   render(){

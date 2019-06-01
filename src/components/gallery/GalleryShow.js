@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
+import ReactImageMagnify from 'react-image-magnify'
 
 import Navbar from '../common/Navbar'
 
@@ -40,6 +41,11 @@ class GalleryShow extends React.Component {
       // remove the favorite
       Favorite.removeFavorite(favorite)
       console.log('Remove favorite... TODO')
+      axios.delete(`/api/favorites/${this.props.match.params.id}`, favorite, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}`}
+      })
+        .then(res => Favorite.deleteFavorite(res.data))
+        .catch(err => console.error(err))
     } else {
       // add the favorite
       axios.post('/api/favorites', favorite, {
@@ -61,11 +67,17 @@ class GalleryShow extends React.Component {
     this.getArtItem()
   }
 
+
   render() {
-    if (!this.state.data) return <h1>Loading...</h1>
+    if (!this.state.data) return <h1>Loading</h1>
+    // <div>
+    //   <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+    //   <span className="sr-only">Loading...</span>
+    // </div>
 
     console.log('gallery this.state.data.objectNumber', this.state.data.objectNumber)
     // console.log('gallery this.state.data.user', this.state.data.user)
+    const image = this.state.data.webImage.url
 
     return (
       <main>
@@ -81,10 +93,26 @@ class GalleryShow extends React.Component {
             </div>
             <div className="columns is-multiline is-centered">
               <div className="column is-8 image-col">
-                <div
-                  className="image"
-                  style={{ backgroundImage: `url(${this.state.data.webImage.url})` }} >
-                </div>
+                <ReactImageMagnify {...{
+                  smallImage: {
+                    alt: this.state.data.title,
+                    isFluidWidth: true,
+                    src: image,
+                    enlargedImagePosition: 'over'
+                  },
+                  largeImage: {
+                    src: image,
+                    width: 1200,
+                    height: 1800,
+                    enlargedImagePosition: 'over'
+                  }
+                }} />
+                {
+                // <div
+                //   className="image"
+                //   style={{ backgroundImage: `url(${this.state.data.webImage.url})` }} >
+                // </div>
+                }
               </div>
               <div className="column is-8">
                 <div className="title is-4">{this.state.data.title}</div>
