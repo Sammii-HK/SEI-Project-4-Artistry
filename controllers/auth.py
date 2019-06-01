@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify, g
 from models.User import User, UserSchema
+from models.Favorite import FavoriteSchema
 from app import db
 from pony.orm import db_session
 from marshmallow import ValidationError
@@ -32,6 +33,7 @@ def login():
 
     data = request.get_json()
 
+
     user = User.get(email=data.get('email'))
 
     if not user or not user.is_password_valid(data.get('password')):
@@ -39,7 +41,8 @@ def login():
 
     return jsonify({
         'message': f'Welcome back {user.username}',
-        'token': user.generate_token()
+        'token': user.generate_token(),
+        'favorites': FavoriteSchema(many=True).dump(user.favorites)
     })
 
 @router.route('/profile', methods=['GET'])

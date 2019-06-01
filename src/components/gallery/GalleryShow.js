@@ -49,9 +49,11 @@ class GalleryShow extends React.Component {
   }
 
   render() {
-    console.log('gallery this.state.data', this.state.data)
-    // console.log('gallery this.state.data.user', this.state.data.user)
     if (!this.state.data) return <h1>Loading...</h1>
+
+    console.log('gallery this.state.data', this.state.data.objectNumber)
+    // console.log('gallery this.state.data.user', this.state.data.user)
+
     return (
       <main>
         <Navbar />
