@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "run:client": "webpack-dev-server --mode=development",
     "run:server": "pipenv run flask run --port 4000",
-    "build": "webpack -p"
+    "build": "webpack -p",
+    "deploy": "yarn build && gh-pages -d public"
   },
   "author": "Samantha Kellow <sammii.h@icloud.com>",
   "dependencies": {
@@ -19,6 +20,7 @@
     "bulma": "^0.7.5",
     "css-loader": "^2.1.1",
     "font-awesome": "^4.7.0",
+    "gh-pages": "^2.0.1",
     "html-webpack-plugin": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
     "node-sass": "^4.12.0",

@@ -51,6 +51,12 @@ class GalleryShow extends React.Component {
     this.getArtItem()
   }
 
+  componentDidUpdate() {
+    console.log('componentDidUpdate this.state.data', this.state.data)
+    console.log('componentDidUpdate this.state.favorites', this.state.favorites)
+    // Favorite.getFavorites()
+  }
+
 
   render() {
     if (!this.state.data) return <h1>Loading</h1>
