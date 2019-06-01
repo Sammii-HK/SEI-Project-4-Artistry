@@ -1,13 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
 
 class Navbar extends React.Component {
 
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
 
     this.state = {
       active: false
@@ -24,7 +24,7 @@ class Navbar extends React.Component {
   logout() {
     Auth.removeToken()
     Favorite.clearFavorites()
-    window.location.reload()
+    // window.location.reload()
     this.props.history.push('/')
   }
 
@@ -64,4 +64,4 @@ class Navbar extends React.Component {
   }
 }
 
-export default Navbar
+export default withRouter(Navbar)
