@@ -24,17 +24,6 @@ class GalleryShow extends React.Component {
     const { objectNumber, title } = this.state.data
     const favorite = { objectNumber: objectNumber, title, image }
 
-    // when the button is clicked, it is removing the data from every favorite index item so it is null
-
-    // CONSOLE LOG
-    // gallery this.state.data.objectNumber SK-A-372
-    // Favorite.js:33 FIND/IS favorite.objectNumber undefined
-    // Favorite.js:33 FIND/IS favorite.objectNumber SK-A-372
-    // Favorite.js:17 REMOVE favorite.objectNumber SK-A-372
-    // Favorite.js:19 REMOVE-INDEX index 7
-    // GalleryShow.js:31 Remove favorite... TODO
-    // All items now null in localStorage
-
     if(Favorite.isFavorite(favorite)) {
       // remove the favorite
       axios.delete(`/api/favorites/${this.props.match.params.id}`, favorite, {
@@ -72,7 +61,6 @@ class GalleryShow extends React.Component {
 
     console.log('gallery props render', this.props)
     console.log('gallery this.state.data.objectNumber', this.state.data.objectNumber)
-    // console.log('gallery this.state.data.user', this.state.data.user)
     const image = this.state.data.webImage.url
 
     return (
