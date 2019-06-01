@@ -34,7 +34,7 @@ def create():
     return schema.dumps(favorite)
 
 
-@router.route('/favorites/<objectNumber>', methods=['DELETE'])
+@router.route('/favorites/<object_number>', methods=['DELETE'])
 @db_session
 def delete(objectNumber):
     favorite = Favorite.get(objectNumber=objectNumber)
