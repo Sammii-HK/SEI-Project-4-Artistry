@@ -16,7 +16,7 @@ class Favorite {
     console.log('REMOVE favorite.objectNumber', favorite.objectNumber)
     const index = favorites.indexOf(favorite.objectNumber)
     console.log('REMOVE-INDEX index', index)
-    favorites.splice(index, 1)
+    if (index >= 0 ) favorites.splice(index, 1)
     console.log('REMOVE-FAVS-2 favorites', favorites)
     localStorage.setItem('favorites', JSON.stringify(favorites))
   }

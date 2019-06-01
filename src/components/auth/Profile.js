@@ -15,6 +15,7 @@ class Profile extends React.Component {
       data: {},
       favorites: Favorite.getFavorites()
     }
+
   }
 
   componentDidMount(){
@@ -26,15 +27,27 @@ class Profile extends React.Component {
     })
       .then(res => this.setState({ data: res.data }))
       .catch(err => console.error(err))
+
+
   }
-  //
+  // //
   // componentDidUpdate() {
   //   this.setState({ favorites: Favorite.getFavorites() })
   // }
 
+  componentDidUpdate() {
+    console.log('componentDidUpdate this.state.data', this.state.data)
+    console.log('componentDidUpdate this.state.data.favorites', this.state.data.favorites)
+    console.log('componentDidUpdate this.state.favorites', this.state.favorites)
+    // console.log('componentDidUpdate this.state.favorites', this.state.favorites)
+    Favorite.getFavorites()
+    // this.handleFavourite()
+  }
+
 
   render(){
     console.log('profile this.state.data', this.state.data)
+    console.log('profile this.state.favorites', this.state.favorites)
     console.log('profile this.state.data.favorites', this.state.data.favorites)
     if(!this.state.data) return <h1>Loading...</h1>
     return(
@@ -54,6 +67,14 @@ class Profile extends React.Component {
               <hr />
               <div className="favorites images-container">
                 <h3 className="title is-4">Favorites</h3>
+
+                {
+                // the changes are being made on this.state.favorites
+                // but this is rendering this.state.data.favorites
+                // but when I map over the this.state.favorites it is undefined
+
+                // though this map is displaying the correct information
+                }
 
                 {this.state.data.favorites &&
                   <div className="columns is-mobile is-multiline">
