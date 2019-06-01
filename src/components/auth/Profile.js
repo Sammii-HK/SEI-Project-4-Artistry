@@ -58,8 +58,8 @@ class Profile extends React.Component {
                 {this.state.data.favorites &&
                   <div className="columns is-mobile is-multiline">
                     {this.state.data.favorites.map(favorite =>
-                      <div key={favorite.object_number} className="column is-3-desktop is-6-tablet is-half-mobile">
-                        <Link to={`/gallery/${favorite.object_number}`}>
+                      <div key={favorite.objectNumber} className="column is-3-desktop is-6-tablet is-half-mobile">
+                        <Link to={`/gallery/${favorite.objectNumber}`}>
                           <div
                             className="art-image"
                             style={{ backgroundImage: `url(${favorite.image})` }} >

@@ -22,7 +22,7 @@ class GalleryShow extends React.Component {
   handleFavourite() {
     const image = this.state.data.webImage.url
     const { objectNumber, title } = this.state.data
-    const favorite = { object_number: objectNumber, title, image }
+    const favorite = { objectNumber: objectNumber, title, image }
 
     // compoare localStorage.favorites[i] with this.state.data.objectNumber
 
@@ -30,14 +30,14 @@ class GalleryShow extends React.Component {
 
     // CONSOLE LOG
     // gallery this.state.data.objectNumber SK-A-372
-    // Favorite.js:33 FIND/IS favorite.object_number undefined
-    // Favorite.js:33 FIND/IS favorite.object_number SK-A-372
-    // Favorite.js:17 REMOVE favorite.object_number SK-A-372
+    // Favorite.js:33 FIND/IS favorite.objectNumber undefined
+    // Favorite.js:33 FIND/IS favorite.objectNumber SK-A-372
+    // Favorite.js:17 REMOVE favorite.objectNumber SK-A-372
     // Favorite.js:19 REMOVE-INDEX index 7
     // GalleryShow.js:31 Remove favorite... TODO
     // All items now null in localStorage
 
-    if(Favorite.isFavorite(favorite) === this.state.data.objectNumber) {
+    if(Favorite.isFavorite(favorite)) {
       // remove the favorite
       Favorite.removeFavorite(favorite)
       console.log('Remove favorite... TODO')
@@ -47,6 +47,7 @@ class GalleryShow extends React.Component {
         .then(res => Favorite.deleteFavorite(res.data))
         .catch(err => console.error(err))
     } else {
+      console.log(favorite)
       // add the favorite
       axios.post('/api/favorites', favorite, {
         headers: { Authorization: `Bearer ${Auth.getToken()}`}
@@ -75,6 +76,7 @@ class GalleryShow extends React.Component {
     //   <span className="sr-only">Loading...</span>
     // </div>
 
+    console.log('gallery props render', this.props)
     console.log('gallery this.state.data.objectNumber', this.state.data.objectNumber)
     // console.log('gallery this.state.data.user', this.state.data.user)
     const image = this.state.data.webImage.url
@@ -87,7 +89,7 @@ class GalleryShow extends React.Component {
           <div className="section">
             <div className="fav-icon">
               <i
-                className={`${Favorite.isFavorite(this.state.data) ? 'fas fa-heart fa-3x' : 'fa fa-heart fa-3x'}`}
+                className={`${Favorite.isFavorite(this.state.data) ? 'fas fa-heart fa-3x' : 'far fa-heart fa-3x'}`}
                 aria-hidden="true"
                 onClick={this.handleFavourite}></i>
             </div>
@@ -102,9 +104,11 @@ class GalleryShow extends React.Component {
                   },
                   largeImage: {
                     src: image,
-                    width: 1200,
-                    height: 1800,
-                    enlargedImagePosition: 'over'
+                    width: 700,
+                    height: 50,
+                    isFluidWidth: true,
+                    enlargedImagePosition: 'over',
+                    imageClassName: 'art-image'
                   }
                 }} />
                 {

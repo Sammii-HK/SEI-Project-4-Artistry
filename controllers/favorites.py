@@ -34,10 +34,10 @@ def create():
     return schema.dumps(favorite)
 
 
-@router.route('/favorites/<int:favorite_id>', methods=['DELETE'])
+@router.route('/favorites/<objectNumber>', methods=['DELETE'])
 @db_session
-def delete(favorite_id):
-    favorite = Favorite.get(id=favorite_id)
+def delete(objectNumber):
+    favorite = Favorite.get(objectNumber=objectNumber)
 
     if not favorite:
         abort(404)

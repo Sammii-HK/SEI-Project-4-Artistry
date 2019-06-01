@@ -6,7 +6,7 @@ from app import db
 class Favorite(db.Entity):
     title = Required(str, unique=True)
     image = Required(str)
-    object_number = Required(str)
+    objectNumber = Required(str)
     user = Required('User')
 
 
@@ -15,15 +15,15 @@ class FavoriteSchema(Schema):
     id = fields.Int(dump_only=True)
     title = fields.Str(required=True)
     image = fields.Str(required=True)
-    object_number = fields.Str(required=True)
+    objectNumber = fields.Str(required=True)
 
     @validates_schema
-    def validate_object_number(self, data):
-        favorite = Favorite.get(object_number=data.get('object_number'))
+    def validate_objectNumber(self, data):
+        favorite = Favorite.get(objectNumber=data.get('objectNumber'))
 
         if favorite:
             raise ValidationError(
-                field_name='object_number',
+                field_name='objectNumber',
                 message=['Must be unique']
             )
 

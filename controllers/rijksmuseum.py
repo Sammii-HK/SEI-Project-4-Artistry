@@ -20,10 +20,10 @@ def collection():
         response=req.text
     )
 
-@router.route('/rijksmuseum/collection/<object_number>')
-def item(object_number):
+@router.route('/rijksmuseum/collection/<objectNumber>')
+def item(objectNumber):
     api_key = os.getenv('RIJKS_API_KEY')
-    url = f'https://www.rijksmuseum.nl/api/en/collection/{object_number}'
+    url = f'https://www.rijksmuseum.nl/api/en/collection/{objectNumber}'
     params = {
         'key': api_key
         }
