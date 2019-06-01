@@ -26,6 +26,7 @@ class GalleryShow extends React.Component {
 
     if(Favorite.isFavorite(favorite)) {
       // remove the favorite
+      console.log('handleFav props render', this.props)
       axios.delete(`/api/favorites/${this.props.match.params.id}`, favorite, {
         headers: { Authorization: `Bearer ${Auth.getToken()}`}
       })

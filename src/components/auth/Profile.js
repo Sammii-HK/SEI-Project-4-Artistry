@@ -28,7 +28,7 @@ class Profile extends React.Component {
       .then(res => this.setState({ data: res.data }))
       .catch(err => console.error(err))
 
-
+    this.setState({ favorites: Favorite.getFavorites() })
   }
   // //
   // componentDidUpdate() {
@@ -49,7 +49,7 @@ class Profile extends React.Component {
     console.log('profile this.state.data', this.state.data)
     console.log('profile this.state.favorites', this.state.favorites)
     console.log('profile this.state.data.favorites', this.state.data.favorites)
-    if(!this.state.data) return <h1>Loading...</h1>
+    if(!this.state.data && !this.state.favorites) return <h1>Loading...</h1>
     return(
       <main>
         <Navbar />
@@ -74,6 +74,11 @@ class Profile extends React.Component {
                 // but when I map over the this.state.favorites it is undefined
 
                 // though this map is displaying the correct information
+
+                // when I change the state to be the this.state.favorites i get this error
+                // GET http://localhost:8000/undefined 40
+
+                // how is it visually mapping over something which is undefined in a console.log
                 }
 
                 {this.state.data.favorites &&
