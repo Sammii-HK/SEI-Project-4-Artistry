@@ -77,10 +77,10 @@ class Profile extends React.Component {
                 // but this is rendering this.state.data.favorites
                 // but when I map over the this.state.favorites it is undefined
 
-                // though this map is displaying the correct information
+                  // though this map is displaying the correct information
 
-                // when I change the state to be the this.state.favorites i get this error
-                // GET http://localhost:8000/undefined 40
+                  // when I change the state to be the this.state.favorites i get this error
+                  // GET http://localhost:8000/undefined 40
 
                 // how is it visually mapping over something which is undefined in a console.log
                 }

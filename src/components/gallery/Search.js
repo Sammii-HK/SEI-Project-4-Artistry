@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
-import Select from 'react-select'
+import React from 'react'
+// import Select from 'react-select'
+// import CreatableSelect from 'react-select/creatable'
+// import qs from 'query-string'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -8,19 +10,18 @@ class Search extends React.Component {
     super(props)
 
     this.state = {
-      data: []
+      data: [],
+      searchInput: ''
     }
 
     this.getArt = this.getArt.bind(this)
-    this.handleChange = this.handleChange.bind(this)
+    // this.handleChange = this.handleChange.bind(this)
+    this.search = this.search.bind(this)
 
-    this.options = [
-      { value: 'none', label: 'Select an Artist' },
-      { value: 'Rembrant', label: 'Rembrant' },
-      { value: 'VanGogh', label: 'Van Gogh' },
-      { value: 'Vermeer', label: 'Vermeer' }
-    ]
   }
+
+
+  // make it so if there was a successful search, push that value into my options
 
   // SEARCH PARAMS I WANT TO SEARCH BY
   // $.artObject.title
@@ -30,6 +31,12 @@ class Search extends React.Component {
   // $.artObject.objectCollection
   // $.artObject.materials
   // $.artObject.classification.iconClassDescription
+
+  // search the collection using a JSON call
+  // search(query) {
+  //   return $.getJSON('https://www.rijksmuseum.nl/api/nl/collection?q=Q&key=fpGQTuED&format=json'.replace('Q', query))
+  // }
+
 
   getArt() {
     axios.get('/api/rijksmuseum/collection')
@@ -41,26 +48,83 @@ class Search extends React.Component {
     this.getArt()
   }
 
-  handleChange(inputValue) {
-    // console.log(e.target.value)
-    console.log(inputValue.value)
+  // React select
+  // handleChange(e) {
+  //   this.setState({ searchInput: e.target.value || '' })
+  //   console.log('e.target.value', e.target.value)
+  //
+  //   // console.log('Option selected:', selectedOption)
+  //   // console.log(inputValue.value)
+  //   const query = e.target.value
+  //
+  //   if (e.keyCode === 13) {
+  //     console.log('this.state.value..', this.state.value)
+  //   }
+
+  // # this url returns a working search query in insomnia
+  // # https://www.rijksmuseum.nl/api/en/collection/?q=still%20life&key={{ api_key  }}&format=json
+
+
+  search(e) {
+
+    // will search only when enter button is pressed
+    if (e.keyCode === 13) {
+
+      this.setState({ searchInput: e.target.value || '' })
+      console.log('e.target.value', e.target.value)
+      console.log('this.state.searchInput..', this.state.searchInput)
+      console.log('this.props', this.props)
+      const query = e.target.value
+      console.log('query', query)
+      const url = `/api/rijksmuseum/collection?q=${query}`
+      console.log('url for axios get request', url)
+
+      // this is picking up the query and appending it on the url string, visible in network
+      axios.get(`/api/rijksmuseum/collection?q=${query}`)
+        .then(res => this.setState({ data: res.data.artObjects }))
+        .catch(err => console.error(err))
+    }
   }
 
-  // <input type="text" placeholder="search..." />
-
   render() {
+
+    // const { selectedOption } = this.state
     console.log('search state.data', this.state.data)
     if (!this.state) return <h1>Loading...</h1>
     return (
       <main>
         <div className="container images-container">
 
-          <Select
-            defaultValue={this.options[0]}
-            options={this.options}
-            onChange={this.handleChange}
-            className="filterSelect"
-          />
+          <div className="search-container">
+
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="search..."
+              // ref="searchInput"
+              className="search "
+              onKeyDown={this.search}
+              onChange={this.search}
+              // value={this.state.searchInput}
+            />
+
+            {
+            // <CreatableSelect
+            //   isClearable
+            //   onChange={this.handleChange}
+            //   onInputChange={this.handleInputChange}
+            //   options={this.options}
+            // />
+
+            // <Select
+            //   // value={selectedOption}
+            //   defaultValue={this.options[0]}
+            //   options={this.options}
+            //   onChange={this.handleChange}
+            //   className="filterSelect"
+            // />
+            }
+          </div>
 
           <div className="section">
             <div className="columns is-mobile is-multiline">
@@ -85,3 +149,62 @@ class Search extends React.Component {
 
 
 export default Search
+
+
+
+
+// this.options = [
+//   { value: 'none', label: 'Select an Artist' },
+//   { value: 'rembrandt', label: 'Rembrandt' },
+//   { value: 'van gogh', label: 'Van Gogh' },
+//   { value: 'vermeer', label: 'Vermeer' }
+// ]
+
+
+//
+// <Select
+//   defaultValue={this.options[0]}
+//   options={this.options}
+//   onChange={this.handleChange}
+//   className="filterSelect"
+// />
+
+
+// <ul>
+//   {this.options.map(item => (
+//     <li key={item.value}>{item.label}</li>
+//   ))}
+// </ul>
+
+
+// <input type="search" placeholder="search" name="q"/>
+// <button
+//   type="submit"
+//   onClick={this.onSubmit}
+// >
+//   Search
+// </button>
+
+
+
+// Customisable react select
+// handleChange(newValue: any, actionMeta: any) {
+//   console.group('Value Changed')
+//   console.log(newValue)
+//   console.log(`action: ${actionMeta.action}`)
+//   console.groupEnd()
+// }
+// handleInputChange(inputValue: any, actionMeta: any) {
+//   console.group('Input Changed')
+//   console.log(inputValue)
+//   console.log(`action: ${actionMeta.action}`)
+//   console.groupEnd()
+// }
+
+
+// <input type="text" placeholder="search..." />
+
+// handleChange = selectedOption => {
+//   this.setState({ selectedOption })
+//   console.log('Option selected:', selectedOption)
+// }
