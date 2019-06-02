@@ -2,7 +2,10 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
-import ReactImageMagnify from 'react-image-magnify'
+// import ReactImageMagnify from 'react-image-magnify'
+
+import Magnifier from "react-magnifier"
+// import yourImage from "./path/to/image"
 
 import Navbar from '../common/Navbar'
 
@@ -52,9 +55,13 @@ class GalleryShow extends React.Component {
     this.getArtItem()
   }
 
+  // the problem doesnt exist on login and logout, this is because this process clears the data and then sets it again
+
   componentDidUpdate() {
+    // this.setState({ favorites: Favorite.getFavorites() })
+
     console.log('componentDidUpdate this.state.data', this.state.data)
-    console.log('componentDidUpdate this.state.data.favorites', this.state.data.favorites)
+    console.log('componentDidUpdate this.state.data.objectNumber', this.state.data.objectNumber)
     console.log('componentDidUpdate this.state.favorites', this.state.favorites)
     // console.log('componentDidUpdate this.state.favorites', this.state.favorites)
     Favorite.getFavorites()
@@ -101,8 +108,9 @@ class GalleryShow extends React.Component {
 
     console.log('gallery props render', this.props)
     console.log('gallery this.state.data.objectNumber', this.state.data.objectNumber)
-    const image = this.state.data.webImage.url
 
+    const image = this.state.data.webImage.url
+    
     return (
       <main>
         <Navbar />
@@ -117,22 +125,9 @@ class GalleryShow extends React.Component {
             </div>
             <div className="columns is-multiline is-centered">
               <div className="column is-8 image-col">
-                <ReactImageMagnify {...{
-                  smallImage: {
-                    alt: this.state.data.title,
-                    isFluidWidth: true,
-                    src: image,
-                    enlargedImagePosition: 'over'
-                  },
-                  largeImage: {
-                    src: image,
-                    width: 700,
-                    height: 50,
-                    isFluidWidth: true,
-                    enlargedImagePosition: 'over',
-                    imageClassName: 'art-image'
-                  }
-                }} />
+
+                <Magnifier src={image} width={500} />
+
                 {
                 // <div
                 //   className="image"
@@ -214,3 +209,27 @@ export default GalleryShow
 // {art.principalMakers.map(artist =>
 //   <div key={artist.name} className="is-6">{artist.name}</div>
 // )}
+
+
+// <ReactImageMagnify {...{
+//   smallImage: {
+//     alt: this.state.data.title,
+//     isFluidWidth: true,
+//     // height: 500,
+//     // width: 100,
+//     src: image,
+//     enlargedImagePosition: 'over',
+//     className: 'art-image',
+//     imageClassName: 'image'
+//   },
+//   largeImage: {
+//     src: image,
+//     width: 1100,
+//     height: 700,
+//     isFluidWidth: true,
+//     enlargedImagePosition: 'over',
+//     enlargedImageClassName: 'zoom'
+//     // imageClassName: 'art-image'
+//     // enlargedImageContainerDimensions: {width: '100%', height: '100%'}
+//   }
+// }} />

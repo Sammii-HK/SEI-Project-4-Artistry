@@ -13,7 +13,7 @@ class Profile extends React.Component {
 
     this.state = {
       data: {},
-      favorites: Favorite.getFavorites()
+      favorites: [Favorite.getFavorites()]
     }
 
   }
@@ -36,12 +36,16 @@ class Profile extends React.Component {
   // }
 
   componentDidUpdate() {
+    // this.setState({ favorites: Favorite.getFavorites() })
+
     console.log('componentDidUpdate this.state.data', this.state.data)
-    console.log('componentDidUpdate this.state.data.favorites', this.state.data.favorites)
+    // console.log('componentDidUpdate this.state.data.favorites', this.state.data.favorites)
+    console.log('componentDidUpdate this.state.data.objectNumber', this.state.data.objectNumber)
     console.log('componentDidUpdate this.state.favorites', this.state.favorites)
-    // console.log('componentDidUpdate this.state.favorites', this.state.favorites)
-    Favorite.getFavorites()
+
+    // Favorite.getFavorites()
     // this.handleFavourite()
+
   }
 
 

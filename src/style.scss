@@ -7,6 +7,13 @@
 .column {
   // border: 3px dotted grey;
   height: 100%;
+
+}
+
+.column.is-8.image-col {
+  justify-content: center;
+  display: flex;
+  margin: 20px auto;
 }
 
 .art-image {
@@ -29,6 +36,11 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.image {
+  height: 100%;
+  width: auto;
 }
 
 .color-box {
