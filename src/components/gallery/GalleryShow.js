@@ -2,10 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
-// import ReactImageMagnify from 'react-image-magnify'
-
-import Magnifier from "react-magnifier"
-// import yourImage from "./path/to/image"
+import Magnifier from 'react-magnifier'
 
 import Navbar from '../common/Navbar'
 
@@ -110,7 +107,7 @@ class GalleryShow extends React.Component {
     console.log('gallery this.state.data.objectNumber', this.state.data.objectNumber)
 
     const image = this.state.data.webImage.url
-    
+
     return (
       <main>
         <Navbar />
@@ -204,32 +201,3 @@ class GalleryShow extends React.Component {
 
 
 export default GalleryShow
-
-
-// {art.principalMakers.map(artist =>
-//   <div key={artist.name} className="is-6">{artist.name}</div>
-// )}
-
-
-// <ReactImageMagnify {...{
-//   smallImage: {
-//     alt: this.state.data.title,
-//     isFluidWidth: true,
-//     // height: 500,
-//     // width: 100,
-//     src: image,
-//     enlargedImagePosition: 'over',
-//     className: 'art-image',
-//     imageClassName: 'image'
-//   },
-//   largeImage: {
-//     src: image,
-//     width: 1100,
-//     height: 700,
-//     isFluidWidth: true,
-//     enlargedImagePosition: 'over',
-//     enlargedImageClassName: 'zoom'
-//     // imageClassName: 'art-image'
-//     // enlargedImageContainerDimensions: {width: '100%', height: '100%'}
-//   }
-// }} />
