@@ -83,7 +83,13 @@ class GalleryShow extends React.Component {
 
               {this.state.data.webImage &&
                 <div className="column is-8 image-col">
-                  <Magnifier src={this.state.data.webImage.url} width={500} />
+                  <Magnifier
+                    src={this.state.data.webImage.url}
+                    width={500}
+                    // className="image"
+                    mgWidth={250}
+                    mgHeight={250}
+                    zoomFactor={2} />
                 </div>
               }
 
@@ -122,9 +128,11 @@ class GalleryShow extends React.Component {
                 <hr />
 
                 {this.state.data.location &&
-                <p>Location: {this.state.data.location}</p> }
+                <p className="is-size-5 has-text-weight-semibold">Location in the Rijksmuseum: {this.state.data.location}</p> }
 
-                {// <div className="columns is-multiline is-mobile">
+                {
+                  // {this.state.data.location &&
+                  // <div className="columns is-multiline is-mobile">
                 //   {this.state.data.dimensions.map(dimension =>
                 //     <div key={dimension.value, dimension.value, dimension.unit} className="column">
                 //       <div className="dimension-box">
@@ -137,6 +145,7 @@ class GalleryShow extends React.Component {
 
                 {this.state.data.classification.people &&
                 <div className="columns is-multiline is-mobile people-col">
+                  <h4 className="column is-12 has-text-weight-semibold">People depicted:</h4>
                   {this.state.data.classification.people.map(person =>
                     <div key={person} className="column is-4">
                       <p>{person}</p>
