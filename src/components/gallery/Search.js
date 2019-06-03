@@ -37,11 +37,7 @@ class Search extends React.Component {
   }
 
   handleChange(e) {
-    console.log('CHANGE e.target.value', e.target.value)
-
     this.setState({ searchInput: e.target.value || '' })
-
-    console.log('CHANGE this.searchInput', this.state.searchInput)
   }
 
   onSubmit(e) {
@@ -55,8 +51,8 @@ class Search extends React.Component {
       params: { query }
     })
       .then(res => {
-        this.setState({ data: res.data.artObjects })
         // this.props.history.push('/')
+        this.setState({ data: res.data.artObjects })
       })
       .catch(err => console.error(err))
     // }
