@@ -23,7 +23,6 @@ class Favorite {
     return JSON.parse(localStorage.getItem('favorites'))
   }
 
-  // check gallery this.state.data.objectNumber against favorite.objectNumber
   static isFavorite(favorite) {
     const favorites = this.getFavorites()
     return favorites.includes(favorite.objectNumber)

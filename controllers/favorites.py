@@ -16,8 +16,6 @@ def favorites():
     return schema.dumps(favorites), 200
 
 
-# MAKE A CREATE AND DELETE ROUTE FOR SAVED FAVS
-
 @router.route('/favorites', methods=['POST'])
 @db_session
 @secure_route

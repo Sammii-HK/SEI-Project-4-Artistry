@@ -10,7 +10,6 @@ class Favorite(db.Entity):
     user = Required('User')
 
 
-
 class FavoriteSchema(Schema):
     id = fields.Int(dump_only=True)
     title = fields.Str(required=True)
