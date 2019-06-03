@@ -15,7 +15,7 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
 
-  }g
+  }
 
   getArt() {
     axios.get('/api/rijksmuseum/collection')
