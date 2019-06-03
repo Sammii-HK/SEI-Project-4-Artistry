@@ -15,7 +15,7 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
 
-  }
+  }g
 
   getArt() {
     axios.get('/api/rijksmuseum/collection')
@@ -51,9 +51,6 @@ class Search extends React.Component {
   }
 
   render() {
-
-    // const { selectedOption } = this.state
-    console.log('search state.data', this.state.data)
     if (!this.state) return <h1>Loading...</h1>
     return (
       <main>
@@ -68,8 +65,6 @@ class Search extends React.Component {
                 type="search"
                 placeholder="search..."
                 className="search "
-                // onSubmit={this.onSubmit}
-                // onKeyDown={this.search}
                 onChange={this.handleChange}
               />
 
@@ -79,7 +74,6 @@ class Search extends React.Component {
                   value="Submit"
                   placeholder="Submit"
                   onClick={this.onSubmit}
-                  // style="hidden"
                 > Submit </button>
               }
             </form>
@@ -109,62 +103,3 @@ class Search extends React.Component {
 
 
 export default Search
-
-
-
-
-// this.options = [
-//   { value: 'none', label: 'Select an Artist' },
-//   { value: 'rembrandt', label: 'Rembrandt' },
-//   { value: 'van gogh', label: 'Van Gogh' },
-//   { value: 'vermeer', label: 'Vermeer' }
-// ]
-
-
-//
-// <Select
-//   defaultValue={this.options[0]}
-//   options={this.options}
-//   onChange={this.handleChange}
-//   className="filterSelect"
-// />
-
-
-// <ul>
-//   {this.options.map(item => (
-//     <li key={item.value}>{item.label}</li>
-//   ))}
-// </ul>
-
-
-// <input type="search" placeholder="search" name="q"/>
-// <button
-//   type="submit"
-//   onClick={this.onSubmit}
-// >
-//   Search
-// </button>
-
-
-
-// Customisable react select
-// handleChange(newValue: any, actionMeta: any) {
-//   console.group('Value Changed')
-//   console.log(newValue)
-//   console.log(`action: ${actionMeta.action}`)
-//   console.groupEnd()
-// }
-// handleInputChange(inputValue: any, actionMeta: any) {
-//   console.group('Input Changed')
-//   console.log(inputValue)
-//   console.log(`action: ${actionMeta.action}`)
-//   console.groupEnd()
-// }
-
-
-// <input type="text" placeholder="search..." />
-
-// handleChange = selectedOption => {
-//   this.setState({ selectedOption })
-//   console.log('Option selected:', selectedOption)
-// }
