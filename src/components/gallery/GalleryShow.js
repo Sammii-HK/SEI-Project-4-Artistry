@@ -52,39 +52,6 @@ class GalleryShow extends React.Component {
     this.getArtItem()
   }
 
-  // the problem doesnt exist on login and logout, this is because this process clears the data and then sets it again
-
-
-  // if you go to an artwork and press the button repeatedly, it is fine
-  // but if you press the button then add something else {
-  // then go back to the page and delete it
-  // it doesnt remove the right index...
-  // but it does always remove the last item from the array
-  // I think its because one thing is checking state and the other localStorage
-  // this is because the profile page is rendering correctly on this.state, but the things running off local storage are going arwy
-  //
-
-  // State is organising the array in ascending order
-
-  // local storage is pushing onto the end of the array
-
-
-  // THIS.STATE.DATA.FAVORITES ON PROFILE PAGE
-  //
-  // objectNumber: "SK-C-109"
-  // objectNumber: "SK-A-3064"
-  // objectNumber: "SK-A-3580"
-  // objectNumber: "SK-C-5"
-
-  // LOCALSTORAGE favorites
-  //
-  // ["BK-AM-33-C", "SK-A-3064", "SK-A-3580", "SK-C-109", "SK-C-5"]
-  // 0: "BK-AM-33-C"
-  // 1: "SK-A-3064"
-  // 2: "SK-A-3580"
-  // 3: "SK-C-109"
-  // 4: "SK-C-5"
-
 
   render() {
     if (!this.state.data) return <h1>Loading</h1>
