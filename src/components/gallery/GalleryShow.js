@@ -30,15 +30,15 @@ class GalleryShow extends React.Component {
       axios.delete(`/api/favorites/${this.props.match.params.id}`, favorite, {
         headers: { Authorization: `Bearer ${Auth.getToken()}`}
       })
-        .then(res => Favorite.removeFavorite(res.data))
-        .then(() => this.setState({ data: this.state.data }))
+        .then(() => Favorite.removeFavorite(favorite))
+        .then(() => this.setState({ favorites: Favorite.getFavorites() }))
     } else {
       // add the favorite
       axios.post('/api/favorites', favorite, {
         headers: { Authorization: `Bearer ${Auth.getToken()}`}
       })
-        .then(res => Favorite.addFavorite(res.data))
-        .then(() => this.setState({ data: this.state.data }))
+        .then(() => Favorite.addFavorite(favorite))
+        .then(() => this.setState({ favorites: Favorite.getFavorites() }))
     }
   }
 
@@ -54,16 +54,6 @@ class GalleryShow extends React.Component {
 
   // the problem doesnt exist on login and logout, this is because this process clears the data and then sets it again
 
-  componentDidUpdate() {
-    // this.setState({ favorites: Favorite.getFavorites() })
-
-    console.log('componentDidUpdate this.state.data', this.state.data)
-    console.log('componentDidUpdate this.state.data.objectNumber', this.state.data.objectNumber)
-    console.log('componentDidUpdate this.state.favorites', this.state.favorites)
-    // console.log('componentDidUpdate this.state.favorites', this.state.favorites)
-    Favorite.getFavorites()
-    // this.handleFavourite()
-  }
 
   // if you go to an artwork and press the button repeatedly, it is fine
   // but if you press the button then add something else {

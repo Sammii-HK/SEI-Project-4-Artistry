@@ -37,7 +37,7 @@ def create():
 @router.route('/favorites/<objectNumber>', methods=['DELETE'])
 @db_session
 def delete(objectNumber):
-    favorite = Favorite.get(objectNumber)
+    favorite = Favorite.get(objectNumber=objectNumber)
 
     if not favorite:
         abort(404)
