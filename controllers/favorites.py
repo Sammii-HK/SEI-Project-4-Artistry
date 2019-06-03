@@ -44,17 +44,3 @@ def delete(objectNumber):
     db.commit()
 
     return '', 204
-#
-#
-# @router.route('/favorites/<object_number>', methods=['DELETE'])
-# @db_session
-# def delete(object_number):
-#     favorite = Favorite.get(objectNumber=object_number)
-#
-#     if not favorite:
-#         abort(404)
-#
-#     favorite.delete()
-#     db.commit()
-#
-#     return '', 204
