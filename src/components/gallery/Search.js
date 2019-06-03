@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
+import Auth from '../../lib/Auth'
 
 class Search extends React.Component {
   constructor(props) {
@@ -18,7 +19,10 @@ class Search extends React.Component {
   }
 
   getArt() {
-    axios.get('/api/rijksmuseum/collection')
+    const token = Auth.getToken()
+    axios.get('/api/rijksmuseum/collection', {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
       .then(res => this.setState({ data: res.data.artObjects }))
       .catch(err => console.error(err))
   }
@@ -43,8 +47,8 @@ class Search extends React.Component {
         params: { query }
       })
         .then(res => {
-          // this.props.history.push('/')
           this.setState({ data: res.data.artObjects })
+          this.props.history.push('/')
         })
         .catch(err => console.error(err))
     }

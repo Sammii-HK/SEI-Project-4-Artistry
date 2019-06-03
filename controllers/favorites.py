@@ -2,8 +2,8 @@ from flask import Blueprint, request, jsonify, g, abort
 from models.Favorite import Favorite, FavoriteSchema
 from app import db
 from pony.orm import db_session
-from marshmallow import ValidationError
 from lib.secure_route import secure_route
+from marshmallow import ValidationError
 
 router = Blueprint('favorites', __name__)
 
@@ -34,6 +34,7 @@ def create():
 
 @router.route('/favorites/<objectNumber>', methods=['DELETE'])
 @db_session
+@secure_route
 def delete(objectNumber):
     favorite = Favorite.get(objectNumber=objectNumber)
 

@@ -43,13 +43,26 @@ class GalleryShow extends React.Component {
   }
 
   getArtItem() {
-    axios.get(`/api/rijksmuseum/collection/${this.props.match.params.id}`)
+    const token = Auth.getToken()
+    axios.get(`/api/rijksmuseum/collection/${this.props.match.params.id}`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
       .then(res => this.setState({ data: res.data.artObject }))
       .catch(err => console.error(err))
   }
 
   componentDidMount() {
     this.getArtItem()
+
+    // const token = Auth.getToken()
+    //
+    // axios.get('/api/profile', {
+    //   headers: { 'Authorization': `Bearer ${token}` }
+    // })
+    //   .then(res => this.setState({ data: res.data }))
+    //   .catch(err => console.error(err))
+    //
+    // this.setState({ favorites: Favorite.getFavorites() })
   }
 
 
@@ -61,6 +74,7 @@ class GalleryShow extends React.Component {
     // </div>
 
     console.log('gallery props render', this.props)
+    // console.log('gallery props render', props)
     console.log('gallery this.state.data.objectNumber', this.state.data.objectNumber)
 
     const image = this.state.data.webImage.url
