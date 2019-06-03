@@ -6,8 +6,6 @@ from marshmallow import Schema, fields, post_load, validates_schema, ValidationE
 from app import db
 from config.environment import secret
 
-# CHEESE
-
 class User(db.Entity):
     username = Required(str, unique=True)
     email = Required(str, unique=True)

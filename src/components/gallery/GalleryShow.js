@@ -29,15 +29,15 @@ class GalleryShow extends React.Component {
     if(Favorite.isFavorite(favorite)) {
       // remove the favorite
       console.log('handleFav props render', this.props)
-      axios.delete(`/api/favorites/${this.props.match.params.id}`, favorite, {
-        headers: { 'Authorization': `Bearer ${token}`}
+      axios.delete(`/api/favorites/${this.props.match.params.id}`, {
+        headers: { 'Authorization': `Bearer ${token}` }
       })
         .then(() => Favorite.removeFavorite(favorite))
         .then(() => this.setState({ favorites: Favorite.getFavorites() }))
     } else {
       // add the favorite
       axios.post('/api/favorites', favorite, {
-        headers: { 'Authorization': `Bearer ${token}`}
+        headers: { 'Authorization': `Bearer ${token}` }
       })
         .then(() => Favorite.addFavorite(favorite))
         .then(() => this.setState({ favorites: Favorite.getFavorites() }))
@@ -57,6 +57,9 @@ class GalleryShow extends React.Component {
     this.getArtItem()
   }
 
+  componentDidUpdate() {
+    console.log('this.state.favorites', this.state.favorites)
+  }
 
   render() {
     if (!this.state.data) return <h1>Loading</h1>

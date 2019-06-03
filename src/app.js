@@ -10,6 +10,8 @@ import Profile from './components/auth/Profile'
 import GalleryShow from './components/gallery/GalleryShow'
 import Search from './components/gallery/Search'
 
+import SecureRoute from './components/common/SecureRoute'
+
 import 'bulma'
 
 import './style.scss'
@@ -21,11 +23,11 @@ class App extends React.Component {
     return (
       <Router>
         <Switch>
-          <Route path="/profile" component={Profile} />
+          <SecureRoute path="/gallery/:id" component={GalleryShow} />
+          <SecureRoute path="/profile" component={Profile} />
+          <SecureRoute exact path="/search" component={Search} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/gallery/:id" component={GalleryShow} />
-          <Route exact path="/search" component={Search} />
           <Route exact path="/" component={Home} />
         </Switch>
       </Router>

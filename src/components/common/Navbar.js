@@ -61,8 +61,12 @@ class Navbar extends React.Component {
       <nav className="navbar is-dark" aria-label="main navigation">
         <div className="container">
           <div className="navbar-brand">
-            {/* Navbar branding and burger menu */}
-            <Link to="/" className="navbar-item is-size-4">Artistry</Link>
+            {
+              /* Navbar branding and burger menu */
+            // <Link to="/" className="navbar-item is-size-4">Artistry</Link>
+            }
+            {Auth.isAuthenticated() && <Link to="/search" className="navbar-item is-size-4">Artistry</Link>}
+            {!Auth.isAuthenticated() && <Link to="/" className="navbar-item is-size-4">Artistry</Link>}
 
             <a role="button" className={`navbar-burger ${this.state.active ? ' is-active' : ''}`} onClick={this.toggleActive}>
               <span aria-hidden="true"></span>
