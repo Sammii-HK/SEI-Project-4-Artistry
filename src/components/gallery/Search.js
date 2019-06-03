@@ -12,13 +12,9 @@ class Search extends React.Component {
     }
 
     this.getArt = this.getArt.bind(this)
-    // this.handleChange = this.handleChange.bind(this)
     this.search = this.search.bind(this)
 
   }
-
-
-  // make it so if there was a successful search, push that value into my options
 
   // SEARCH PARAMS I WANT TO SEARCH BY
   // $.artObject.title
@@ -29,12 +25,6 @@ class Search extends React.Component {
   // $.artObject.materials
   // $.artObject.classification.iconClassDescription
 
-  // search the collection using a JSON call
-  // search(query) {
-  //   return $.getJSON('https://www.rijksmuseum.nl/api/nl/collection?q=Q&key=fpGQTuED&format=json'.replace('Q', query))
-  // }
-
-
   getArt() {
     axios.get('/api/rijksmuseum/collection')
       .then(res => this.setState({ data: res.data.artObjects }))
@@ -44,19 +34,6 @@ class Search extends React.Component {
   componentDidMount() {
     this.getArt()
   }
-
-  // React select
-  // handleChange(e) {
-  //   this.setState({ searchInput: e.target.value || '' })
-  //   console.log('e.target.value', e.target.value)
-  //
-  //   // console.log('Option selected:', selectedOption)
-  //   // console.log(inputValue.value)
-  //   const query = e.target.value
-  //
-  //   if (e.keyCode === 13) {
-  //     console.log('this.state.value..', this.state.value)
-  //   }
 
   // # this url returns a working search query in insomnia
   // # https://www.rijksmuseum.nl/api/en/collection/?q=still%20life&key={{ api_key  }}&format=json
