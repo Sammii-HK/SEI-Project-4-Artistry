@@ -107,6 +107,7 @@ class GalleryShow extends React.Component {
                         className="color-box"
                         style={{ backgroundColor: color }} >
                       </div>
+                      <p className="color">{color}</p>
                     </div>
                   )}
                 </div>
