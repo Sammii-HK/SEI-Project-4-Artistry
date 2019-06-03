@@ -13,6 +13,7 @@ class Search extends React.Component {
 
     this.getArt = this.getArt.bind(this)
     this.search = this.search.bind(this)
+    this.handleChange = this.handleChange.bind(this)
 
   }
 
@@ -38,22 +39,33 @@ class Search extends React.Component {
   // # this url returns a working search query in insomnia
   // # https://www.rijksmuseum.nl/api/en/collection/?q=still%20life&key={{ api_key  }}&format=json
 
+  handleChange(e) {
+    this.setState({ searchInput: e.target.value || '' })
+    console.log('e.target.value', e.target.value)
+    console.log('this.data.searchInput', this.state.data.searchInput)
+  }
 
   search(e) {
+    console.log('e.target.value', e.target.value)
 
     // will search only when enter button is pressed
-    if (e.keyCode === 13) {
+    // if (e.keyCode === 13) {
 
-      this.setState({ searchInput: e.target.value || '' })
+    e.preventDefault()
 
-      const query = e.target.value
+    const query = e.target.value
+    console.log('query', query)
+    // console.log(input.value)
 
-      axios.get('/api/rijksmuseum/collection', {
-        params: { query }
+    axios.get('/api/rijksmuseum/collection', {
+      params: { query }
+    })
+      .then(res => {
+        this.setState({ data: res.data.artObjects })
+        // this.props.history.push('/')
       })
-        .then(res => this.setState({ data: res.data.artObjects }))
-        .catch(err => console.error(err))
-    }
+      .catch(err => console.error(err))
+    // }
   }
 
   render() {
@@ -67,16 +79,26 @@ class Search extends React.Component {
 
           <div className="search-container">
 
-            <form>
+            <form onSubmit={this.search}>
               <input
                 id="searchInput"
+                name="search"
                 type="search"
                 placeholder="search..."
-                // ref="searchInput"
                 className="search "
-                onKeyDown={this.search}
-                onChange={this.search}
+                onSubmit={this.search}
+                // onKeyDown={this.search}
+                onChange={this.handleChange}
               />
+
+              {
+                <button
+                  type="submit"
+                  value="Submit"
+                  placeholder="Submit"
+                  // style="hidden"
+                > Submit </button>
+              }
             </form>
 
           </div>
