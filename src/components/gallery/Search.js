@@ -1,7 +1,4 @@
 import React from 'react'
-// import Select from 'react-select'
-// import CreatableSelect from 'react-select/creatable'
-// import qs from 'query-string'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -104,22 +101,7 @@ class Search extends React.Component {
                 onChange={this.search}
               />
             </form>
-            {
-            // <CreatableSelect
-            //   isClearable
-            //   onChange={this.handleChange}
-            //   onInputChange={this.handleInputChange}
-            //   options={this.options}
-            // />
 
-            // <Select
-            //   // value={selectedOption}
-            //   defaultValue={this.options[0]}
-            //   options={this.options}
-            //   onChange={this.handleChange}
-            //   className="filterSelect"
-            // />
-            }
           </div>
 
           <div className="section">
