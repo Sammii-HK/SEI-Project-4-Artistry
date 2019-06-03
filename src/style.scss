@@ -38,6 +38,11 @@
   }
 }
 
+.columns.is-centered {
+  justify-content: center;
+  display: flex;
+}
+
 .column {
   // border: 3px dotted grey;
   height: 100%;
@@ -67,8 +72,6 @@
     color: #4a4a4a;
   }
 }
-
-// .placeholder-image
 
 .image {
   // height: 500px;
@@ -103,20 +106,26 @@
 }
 
 .color-box:hover + .color {
-  color: #4a4a4a;
+  color: #5e4968;
 }
 
 
 .fav-icon {
   display: flex;
   justify-content: flex-end;
+  margin-right: 25px;
   cursor: pointer;
   transition: color 0.3s ease;
-  color: purple;
-
+  color: #5e4968;
+  // color: #4a4a4a;
 }
 .fav-icon:hover {
   color: lightGrey;
+}
+
+.label {
+  margin-top: 9px;
+  margin-right: 10px;
 }
 
 .people-col {

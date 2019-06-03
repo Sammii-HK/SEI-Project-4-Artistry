@@ -80,85 +80,80 @@ class GalleryShow extends React.Component {
                 onClick={this.handleFavourite}></i>
             </div>
             <div className="columns is-multiline is-centered">
+              <div className="column is-12-desktop is-9-tablet is-9-mobile">
+                <div className="columns is-multiline is-centered">
 
-              {this.state.data.webImage &&
-                <div className="column is-8 image-col">
-                  <Magnifier
-                    src={this.state.data.webImage.url}
-                    width={500}
-                    // className="image"
-                    mgWidth={250}
-                    mgHeight={250}
-                    zoomFactor={2} />
-                </div>
-              }
+                  {this.state.data.webImage &&
+                    <div className="column is-8 image-col">
+                      <Magnifier
+                        src={this.state.data.webImage.url}
+                        width={500}
+                        // className="image"
+                        mgWidth={250}
+                        mgHeight={250}
+                        zoomFactor={2} />
+                    </div>
+                  }
 
-              <div className="column is-8">
-                <div className="title is-4">{this.state.data.title}</div>
-                <div className="subtitle is-4 has-text-right">{this.state.data.principalOrFirstMaker}</div>
-                <p>{this.state.data.plaqueDescriptionEnglish}</p>
-                <hr />
+                  <div className="column is-8">
+                    <div className="title is-4">{this.state.data.title}</div>
+                    <div className="subtitle is-4 has-text-right">{this.state.data.principalOrFirstMaker}</div>
+                    <p>{this.state.data.plaqueDescriptionEnglish}</p>
+                    <hr />
 
-                <div className="level">
-                  <div className="level-item">Presented: {this.state.data.dating.presentingDate}</div>
-                  <div className="level-item">{this.state.data.physicalMedium}</div>
-                </div>
+                    <div className="level">
+                      <div className="level-item">Presented: {this.state.data.dating.presentingDate}</div>
+                      <div className="level-item">{this.state.data.physicalMedium}</div>
+                    </div>
 
-                <hr />
+                    <hr />
 
-                <div className="columns is-multiline is-mobile">
-                  {this.state.data.colors.map(color =>
-                    <div key={color} className="column">
-                      <div
-                        className="color-box"
-                        style={{ backgroundColor: color }} >
+                    <div className="columns is-multiline is-mobile">
+                      {this.state.data.colors.map(color =>
+                        <div key={color} className="column is-3-mobile is-4-tablet">
+                          <div
+                            className="color-box"
+                            style={{ backgroundColor: color }} >
+                          </div>
+                          <p className="color">{color}</p>
+                        </div>
+                      )}
+                    </div>
+                    <hr />
+                    <div className="columns is-multiline is-mobile">
+                      {this.state.data.materials.map(material =>
+                        <div key={material.value} className="column">
+                          <p className="has-text-centered">{material}</p>
+                        </div>
+                      )}
+                    </div>
+                    <hr />
+
+                    {this.state.data.location &&
+                    <p className="is-size-5 has-text-weight-semibold">Location in the Rijksmuseum: {this.state.data.location}</p> }
+
+
+                  </div>
+
+
+                  {this.state.data.classification.people &&
+                  <div className="columns is-multiline is-mobile people-col">
+                    <h4 className="column is-12 has-text-weight-semibold">People depicted:</h4>
+                    {this.state.data.classification.people.map(person =>
+                      <div key={person} className="column is-4">
+                        <p>{person}</p>
                       </div>
-                      <p className="color">{color}</p>
-                    </div>
-                  )}
+                    )}
+                  </div> }
+
+
+
                 </div>
-                <hr />
-                <div className="columns is-multiline is-mobile">
-                  {this.state.data.materials.map(material =>
-                    <div key={material} className="column">
-                      <p className="has-text-centered">{material}</p>
-                    </div>
-                  )}
-                </div>
-                <hr />
-
-                {this.state.data.location &&
-                <p className="is-size-5 has-text-weight-semibold">Location in the Rijksmuseum: {this.state.data.location}</p> }
-
-                {
-                  // {this.state.data.location &&
-                  // <div className="columns is-multiline is-mobile">
-                //   {this.state.data.dimensions.map(dimension =>
-                //     <div key={dimension.value, dimension.value, dimension.unit} className="column">
-                //       <div className="dimension-box">
-                //         <p>{dimension}</p>
-                //       </div>
-                //     </div>
-                //   )}
-                // </div>
-                }
-
-                {this.state.data.classification.people &&
-                <div className="columns is-multiline is-mobile people-col">
-                  <h4 className="column is-12 has-text-weight-semibold">People depicted:</h4>
-                  {this.state.data.classification.people.map(person =>
-                    <div key={person} className="column is-4">
-                      <p>{person}</p>
-                    </div>
-                  )}
-                </div> }
-
-
-
               </div>
             </div>
           </div>
         </div>
+
       </main>
     )
   }
@@ -174,3 +169,12 @@ export default GalleryShow
 //   style={{ backgroundImage: `url(${this.state.data.webImage.url})` }} >
 // </div>
 }
+
+
+// {this.state.data.dimensions.map(dimension =>
+//   <div key={dimension.value, dimension.value, dimension.unit} className="column">
+//     <div className="dimension-box">
+//       <p>{dimension}</p>
+//     </div>
+//   </div>
+// )}

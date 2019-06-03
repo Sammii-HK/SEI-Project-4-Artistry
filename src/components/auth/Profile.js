@@ -38,13 +38,16 @@ class Profile extends React.Component {
         <section className="section">
           <div className="container">
             <div className="edit-form-wrapper">
-              <div>
-                <div className="title is-4">Profile</div>
-                <label className="label">Username</label>
-                <div>{this.state.data.username}</div>
-
-                <label className="label">Email</label>
-                <div>{this.state.data.email}</div>
+              <div className="title is-4">Profile</div>
+              <div className="level is-mobile">
+                <div className="level-item">
+                  <label className="label">Username</label>
+                  <div>{this.state.data.username}</div>
+                </div>
+                <div className="level-item">
+                  <label className="label">Email</label>
+                  <div>{this.state.data.email}</div>
+                </div>
               </div>
               <hr />
 
