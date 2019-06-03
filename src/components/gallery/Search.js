@@ -65,27 +65,34 @@ class Search extends React.Component {
         <Navbar />
         <div className="container images-container">
 
-          {
-            <form onSubmit={this.onSubmit}>
-              <input
-                id="searchInput"
-                name="search"
-                type="search"
-                placeholder="search..."
-                className="search "
-                onChange={this.handleChange}
-              />
-
-              <button
-                type="submit"
-                value="Submit"
-                placeholder="Submit"
-                onClick={this.onSubmit}
-              > Submit </button>
-            </form>
-          }
-
           <div className="section">
+
+            {
+              <div className="columns search-container">
+                <div className="column is-6 search-bar">
+                  <form onSubmit={this.onSubmit}>
+                    <input
+                      id="searchInput"
+                      name="search"
+                      type="search"
+                      placeholder="search..."
+                      className="search "
+                      onChange={this.handleChange}
+                    />
+
+                    <button
+                      type="submit"
+                      value="Submit"
+                      placeholder="Submit"
+                      onClick={this.onSubmit}
+                    > Submit </button>
+                  </form>
+                </div>
+              </div>
+            }
+
+
+
             <div className="columns is-mobile is-multiline">
               {this.state.data.map(art =>
                 <div key={art.objectNumber} className="column is-3-desktop is-6-tablet is-half-mobile">
