@@ -37,20 +37,19 @@ class Search extends React.Component {
   }
 
   handleChange(e) {
+    console.log('CHANGE e.target.value', e.target.value)
+
     this.setState({ searchInput: e.target.value || '' })
-    console.log('e.target.value', e.target.value)
-    console.log('this.data.searchInput', this.state.data.searchInput)
+
+    console.log('CHANGE this.searchInput', this.state.searchInput)
   }
 
   onSubmit(e) {
 
-    // will search only when enter button is pressed
-    // if (e.keyCode === 13) {
-
     e.preventDefault()
 
-    const query = e.target.value
-    console.log('query', query)
+    const query = this.state.searchInput
+    console.log('SUBMIT query', query)
 
     axios.get('/api/rijksmuseum/collection', {
       params: { query }
@@ -66,7 +65,7 @@ class Search extends React.Component {
   render() {
 
     // const { selectedOption } = this.state
-    // console.log('search state.data', this.state.data)
+    console.log('search state.data', this.state.data)
     if (!this.state) return <h1>Loading...</h1>
     return (
       <main>
@@ -91,6 +90,7 @@ class Search extends React.Component {
                   type="submit"
                   value="Submit"
                   placeholder="Submit"
+                  onClick={this.onSubmit}
                   // style="hidden"
                 > Submit </button>
               }
