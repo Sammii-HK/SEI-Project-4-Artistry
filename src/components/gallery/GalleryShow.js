@@ -68,8 +68,6 @@ class GalleryShow extends React.Component {
     //   <span className="sr-only">Loading...</span>
     // </div>
 
-    const image = this.state.data.webImage.url
-
     return (
       <main>
         <Navbar />
@@ -82,17 +80,13 @@ class GalleryShow extends React.Component {
                 onClick={this.handleFavourite}></i>
             </div>
             <div className="columns is-multiline is-centered">
-              <div className="column is-8 image-col">
 
-                <Magnifier src={image} width={500} />
+              {this.state.data.webImage &&
+                <div className="column is-8 image-col">
+                  <Magnifier src={this.state.data.webImage.url} width={500} />
+                </div>
+              }
 
-                {
-                // <div
-                //   className="image"
-                //   style={{ backgroundImage: `url(${this.state.data.webImage.url})` }} >
-                // </div>
-                }
-              </div>
               <div className="column is-8">
                 <div className="title is-4">{this.state.data.title}</div>
                 <div className="subtitle is-4 has-text-right">{this.state.data.principalOrFirstMaker}</div>
@@ -162,3 +156,11 @@ class GalleryShow extends React.Component {
 
 
 export default GalleryShow
+
+
+{
+// <div
+//   className="image"
+//   style={{ backgroundImage: `url(${this.state.data.webImage.url})` }} >
+// </div>
+}
