@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
+import Navbar from '../common/Navbar'
 
 class Search extends React.Component {
   constructor(props) {
@@ -58,6 +59,7 @@ class Search extends React.Component {
     if (!this.state) return <h1>Loading...</h1>
     return (
       <main>
+        <Navbar />
         <div className="container images-container">
 
           <div className="search-container">

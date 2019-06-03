@@ -53,16 +53,6 @@ class GalleryShow extends React.Component {
 
   componentDidMount() {
     this.getArtItem()
-
-    // const token = Auth.getToken()
-    //
-    // axios.get('/api/profile', {
-    //   headers: { 'Authorization': `Bearer ${token}` }
-    // })
-    //   .then(res => this.setState({ data: res.data }))
-    //   .catch(err => console.error(err))
-    //
-    // this.setState({ favorites: Favorite.getFavorites() })
   }
 
 
