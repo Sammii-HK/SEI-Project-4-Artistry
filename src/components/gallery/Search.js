@@ -17,15 +17,6 @@ class Search extends React.Component {
 
   }
 
-  // SEARCH PARAMS I WANT TO SEARCH BY
-  // $.artObject.title
-  // $.artObject.colors
-  // $.artObject.principalMaker
-  // $.artObject.dating.presentingDate
-  // $.artObject.objectCollection
-  // $.artObject.materials
-  // $.artObject.classification.iconClassDescription
-
   getArt() {
     axios.get('/api/rijksmuseum/collection')
       .then(res => this.setState({ data: res.data.artObjects }))
@@ -42,20 +33,21 @@ class Search extends React.Component {
 
   onSubmit(e) {
 
-    e.preventDefault()
+    if (this.state.data !== null) {
+      e.preventDefault()
 
-    const query = this.state.searchInput
-    console.log('SUBMIT query', query)
+      const query = this.state.searchInput
+      console.log('SUBMIT query', query)
 
-    axios.get('/api/rijksmuseum/collection', {
-      params: { query }
-    })
-      .then(res => {
-        // this.props.history.push('/')
-        this.setState({ data: res.data.artObjects })
+      axios.get('/api/rijksmuseum/collection', {
+        params: { query }
       })
-      .catch(err => console.error(err))
-    // }
+        .then(res => {
+          // this.props.history.push('/')
+          this.setState({ data: res.data.artObjects })
+        })
+        .catch(err => console.error(err))
+    }
   }
 
   render() {
