@@ -12,8 +12,8 @@ class Search extends React.Component {
     }
 
     this.getArt = this.getArt.bind(this)
-    this.search = this.search.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
 
   }
 
@@ -36,17 +36,13 @@ class Search extends React.Component {
     this.getArt()
   }
 
-  // # this url returns a working search query in insomnia
-  // # https://www.rijksmuseum.nl/api/en/collection/?q=still%20life&key={{ api_key  }}&format=json
-
   handleChange(e) {
     this.setState({ searchInput: e.target.value || '' })
     console.log('e.target.value', e.target.value)
     console.log('this.data.searchInput', this.state.data.searchInput)
   }
 
-  search(e) {
-    console.log('e.target.value', e.target.value)
+  onSubmit(e) {
 
     // will search only when enter button is pressed
     // if (e.keyCode === 13) {
@@ -55,7 +51,6 @@ class Search extends React.Component {
 
     const query = e.target.value
     console.log('query', query)
-    // console.log(input.value)
 
     axios.get('/api/rijksmuseum/collection', {
       params: { query }
@@ -71,7 +66,7 @@ class Search extends React.Component {
   render() {
 
     // const { selectedOption } = this.state
-    console.log('search state.data', this.state.data)
+    // console.log('search state.data', this.state.data)
     if (!this.state) return <h1>Loading...</h1>
     return (
       <main>
@@ -79,14 +74,14 @@ class Search extends React.Component {
 
           <div className="search-container">
 
-            <form onSubmit={this.search}>
+            <form onSubmit={this.onSubmit}>
               <input
                 id="searchInput"
                 name="search"
                 type="search"
                 placeholder="search..."
                 className="search "
-                onSubmit={this.search}
+                // onSubmit={this.onSubmit}
                 // onKeyDown={this.search}
                 onChange={this.handleChange}
               />
