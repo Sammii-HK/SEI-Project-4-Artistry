@@ -27,12 +27,12 @@
         background-color: #363636;
         color: white;
         padding: 8px 10px;
+        transition: 0.3s ease;
 
-        &:hover {
-          color: #363636;
-          background-color: white;
-          transition: 0.3s;;
-        }
+      }
+      button:hover {
+        color: #363636;
+        background-color: white;
       }
     }
   }
@@ -99,11 +99,11 @@
   padding-top: 10px;
   color: white;
   justify-content: center;
+  transition: color 0.3s ease;
 }
 
 .color-box:hover + .color {
   color: #4a4a4a;
-  transition: 0.3s;
 }
 
 
@@ -111,11 +111,12 @@
   display: flex;
   justify-content: flex-end;
   cursor: pointer;
+  transition: color 0.3s ease;
+  color: purple;
 
-  :hover {
-    color: #463257;
-    transition: 0.3s;
-  }
+}
+.fav-icon:hover {
+  color: lightGrey;
 }
 
 .people-col {
