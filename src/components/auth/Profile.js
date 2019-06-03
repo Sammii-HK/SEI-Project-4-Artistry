@@ -39,7 +39,7 @@ class Profile extends React.Component {
           <div className="container">
             <div className="edit-form-wrapper">
               <div className="title is-4">Profile</div>
-              <div className="level is-mobile">
+              <div className="level">
                 <div className="level-item">
                   <label className="label">Username</label>
                   <div>{this.state.data.username}</div>
