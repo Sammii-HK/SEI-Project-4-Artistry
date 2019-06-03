@@ -11,7 +11,8 @@ class Navbar extends React.Component {
     super(props)
 
     this.state = {
-      active: false
+      active: false,
+      searchInput: ''
     }
 
     this.toggleActive = this.toggleActive.bind(this)
@@ -36,7 +37,10 @@ class Navbar extends React.Component {
   //   this.setState({ searchInput: e.target.value || '' })
   // }
   //
+  //
   // onSubmit(e) {
+  //
+  //   console.log(window.location.href)
   //
   //   if (this.state.data !== null) {
   //     e.preventDefault()
@@ -50,7 +54,7 @@ class Navbar extends React.Component {
   //     })
   //       .then(res => {
   //         this.setState({ data: res.data.artObjects })
-  //         this.props.history.push('/search')
+  //         if (window.location.href !== 'http://localhost:8000/#/search') this.props.history.push('/search')
   //       })
   //       .catch(err => console.error(err))
   //   }
@@ -83,25 +87,25 @@ class Navbar extends React.Component {
               <div className="search-container">
 
                 {
-                // <form onSubmit={this.onSubmit}>
-                //   <input
-                //     id="searchInput"
-                //     name="search"
-                //     type="search"
-                //     placeholder="search..."
-                //     className="search "
-                //     onChange={this.handleChange}
-                //   />
-                //
-                //   {
-                //     <button
-                //       type="submit"
-                //       value="Submit"
-                //       placeholder="Submit"
-                //       onClick={this.onSubmit}
-                //     > Submit </button>
-                //   }
-                // </form>
+                  // <form onSubmit={this.onSubmit}>
+                  //   <input
+                  //     id="searchInput"
+                  //     name="search"
+                  //     type="search"
+                  //     placeholder="search..."
+                  //     className="search "
+                  //     onChange={this.handleChange}
+                  //   />
+                  //
+                  //   {
+                  //     <button
+                  //       type="submit"
+                  //       value="Submit"
+                  //       placeholder="Submit"
+                  //       onClick={this.onSubmit}
+                  //     > Submit </button>
+                  //   }
+                  // </form>
                 }
 
               </div>

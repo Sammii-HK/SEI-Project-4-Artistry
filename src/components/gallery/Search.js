@@ -38,6 +38,8 @@ class Search extends React.Component {
 
   onSubmit(e) {
 
+    console.log(window.location.href)
+
     if (this.state.data !== null) {
       e.preventDefault()
       const query = this.state.searchInput
@@ -50,7 +52,7 @@ class Search extends React.Component {
       })
         .then(res => {
           this.setState({ data: res.data.artObjects })
-          this.props.history.push('/search')
+          if (window.location.href !== 'http://localhost:8000/#/search') this.props.history.push('/search')
         })
         .catch(err => console.error(err))
     }
@@ -63,25 +65,26 @@ class Search extends React.Component {
         <Navbar />
         <div className="container images-container">
 
-          <form onSubmit={this.onSubmit}>
-            <input
-              id="searchInput"
-              name="search"
-              type="search"
-              placeholder="search..."
-              className="search "
-              onChange={this.handleChange}
-            />
+          {
+            <form onSubmit={this.onSubmit}>
+              <input
+                id="searchInput"
+                name="search"
+                type="search"
+                placeholder="search..."
+                className="search "
+                onChange={this.handleChange}
+              />
 
-            {
               <button
                 type="submit"
                 value="Submit"
                 placeholder="Submit"
                 onClick={this.onSubmit}
               > Submit </button>
-            }
-          </form>
+            </form>
+          }
+
           <div className="section">
             <div className="columns is-mobile is-multiline">
               {this.state.data.map(art =>
