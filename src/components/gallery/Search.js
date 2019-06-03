@@ -40,16 +40,17 @@ class Search extends React.Component {
 
     if (this.state.data !== null) {
       e.preventDefault()
-
       const query = this.state.searchInput
-      console.log('SUBMIT query', query)
+      console.log('SUBMIT QUERY', query)
 
+      const token = Auth.getToken()
       axios.get('/api/rijksmuseum/collection', {
-        params: { query }
+        params: { query },
+        headers: { 'Authorization': `Bearer ${token}` }
       })
         .then(res => {
           this.setState({ data: res.data.artObjects })
-          this.props.history.push('/')
+          this.props.history.push('/search')
         })
         .catch(err => console.error(err))
     }
@@ -62,30 +63,25 @@ class Search extends React.Component {
         <Navbar />
         <div className="container images-container">
 
-          <div className="search-container">
+          <form onSubmit={this.onSubmit}>
+            <input
+              id="searchInput"
+              name="search"
+              type="search"
+              placeholder="search..."
+              className="search "
+              onChange={this.handleChange}
+            />
 
-            <form onSubmit={this.onSubmit}>
-              <input
-                id="searchInput"
-                name="search"
-                type="search"
-                placeholder="search..."
-                className="search "
-                onChange={this.handleChange}
-              />
-
-              {
-                <button
-                  type="submit"
-                  value="Submit"
-                  placeholder="Submit"
-                  onClick={this.onSubmit}
-                > Submit </button>
-              }
-            </form>
-
-          </div>
-
+            {
+              <button
+                type="submit"
+                value="Submit"
+                placeholder="Submit"
+                onClick={this.onSubmit}
+              > Submit </button>
+            }
+          </form>
           <div className="section">
             <div className="columns is-mobile is-multiline">
               {this.state.data.map(art =>

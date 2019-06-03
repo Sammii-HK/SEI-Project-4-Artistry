@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
+// import axios from 'axios'
 
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
@@ -15,6 +16,8 @@ class Navbar extends React.Component {
 
     this.toggleActive = this.toggleActive.bind(this)
     this.logout = this.logout.bind(this)
+    // this.handleChange = this.handleChange.bind(this)
+    // this.onSubmit = this.onSubmit.bind(this)
   }
 
   toggleActive() {
@@ -27,6 +30,31 @@ class Navbar extends React.Component {
     // window.location.reload()
     this.props.history.push('/')
   }
+
+  //
+  // handleChange(e) {
+  //   this.setState({ searchInput: e.target.value || '' })
+  // }
+  //
+  // onSubmit(e) {
+  //
+  //   if (this.state.data !== null) {
+  //     e.preventDefault()
+  //     const query = this.state.searchInput
+  //     console.log('SUBMIT QUERY', query)
+  //
+  //     const token = Auth.getToken()
+  //     axios.get('/api/rijksmuseum/collection', {
+  //       params: { query },
+  //       headers: { 'Authorization': `Bearer ${token}` }
+  //     })
+  //       .then(res => {
+  //         this.setState({ data: res.data.artObjects })
+  //         this.props.history.push('/search')
+  //       })
+  //       .catch(err => console.error(err))
+  //   }
+  // }
 
   render() {
     return (
@@ -48,6 +76,31 @@ class Navbar extends React.Component {
             {/* Everything else */}
             <div className="navbar-start">
               {/* left-hand links */}
+              <div className="search-container">
+
+                {
+                // <form onSubmit={this.onSubmit}>
+                //   <input
+                //     id="searchInput"
+                //     name="search"
+                //     type="search"
+                //     placeholder="search..."
+                //     className="search "
+                //     onChange={this.handleChange}
+                //   />
+                //
+                //   {
+                //     <button
+                //       type="submit"
+                //       value="Submit"
+                //       placeholder="Submit"
+                //       onClick={this.onSubmit}
+                //     > Submit </button>
+                //   }
+                // </form>
+                }
+
+              </div>
 
             </div>
             <div className="navbar-end">

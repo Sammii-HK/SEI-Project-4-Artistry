@@ -16,10 +16,12 @@ class GalleryShow extends React.Component {
     }
 
     this.handleFavourite = this.handleFavourite.bind(this)
+    this.getArtItem = this.getArtItem.bind(this)
   }
 
 
   handleFavourite() {
+    const token = Auth.getToken()
     const image = this.state.data.webImage.url
     const { objectNumber, title } = this.state.data
     const favorite = { objectNumber: objectNumber, title, image }
@@ -28,14 +30,14 @@ class GalleryShow extends React.Component {
       // remove the favorite
       console.log('handleFav props render', this.props)
       axios.delete(`/api/favorites/${this.props.match.params.id}`, favorite, {
-        headers: { Authorization: `Bearer ${Auth.getToken()}`}
+        headers: { 'Authorization': `Bearer ${token}`}
       })
         .then(() => Favorite.removeFavorite(favorite))
         .then(() => this.setState({ favorites: Favorite.getFavorites() }))
     } else {
       // add the favorite
       axios.post('/api/favorites', favorite, {
-        headers: { Authorization: `Bearer ${Auth.getToken()}`}
+        headers: { 'Authorization': `Bearer ${token}`}
       })
         .then(() => Favorite.addFavorite(favorite))
         .then(() => this.setState({ favorites: Favorite.getFavorites() }))
@@ -63,17 +65,12 @@ class GalleryShow extends React.Component {
     //   <span className="sr-only">Loading...</span>
     // </div>
 
-    console.log('gallery props render', this.props)
-    // console.log('gallery props render', props)
-    console.log('gallery this.state.data.objectNumber', this.state.data.objectNumber)
-
     const image = this.state.data.webImage.url
 
     return (
       <main>
         <Navbar />
         <div className="container">
-          <input type="text" placeholder="search..." />
           <div className="section">
             <div className="fav-icon">
               <i

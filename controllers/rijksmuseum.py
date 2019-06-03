@@ -14,7 +14,6 @@ router = Blueprint('rijks', __name__)
 @db_session
 @secure_route
 def search():
-    print('I AM RUNNING')
     query = request.args.get('query')
     api_key = os.getenv('RIJKS_API_KEY')
     url = 'https://www.rijksmuseum.nl/api/en/collection'
