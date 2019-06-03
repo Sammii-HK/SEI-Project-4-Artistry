@@ -71,16 +71,12 @@ class Search extends React.Component {
     if (e.keyCode === 13) {
 
       this.setState({ searchInput: e.target.value || '' })
-      console.log('e.target.value', e.target.value)
-      console.log('this.state.searchInput..', this.state.searchInput)
-      console.log('this.props', this.props)
-      const query = e.target.value
-      console.log('query', query)
-      const url = `/api/rijksmuseum/collection?q=${query}`
-      console.log('url for axios get request', url)
 
-      // this is picking up the query and appending it on the url string, visible in network
-      axios.get(`/api/rijksmuseum/collection?q=${query}`)
+      const query = e.target.value
+
+      axios.get('/api/rijksmuseum/collection', {
+        params: { query }
+      })
         .then(res => this.setState({ data: res.data.artObjects }))
         .catch(err => console.error(err))
     }
@@ -97,17 +93,17 @@ class Search extends React.Component {
 
           <div className="search-container">
 
-            <input
-              id="searchInput"
-              type="search"
-              placeholder="search..."
-              // ref="searchInput"
-              className="search "
-              onKeyDown={this.search}
-              onChange={this.search}
-              // value={this.state.searchInput}
-            />
-
+            <form>
+              <input
+                id="searchInput"
+                type="search"
+                placeholder="search..."
+                // ref="searchInput"
+                className="search "
+                onKeyDown={this.search}
+                onChange={this.search}
+              />
+            </form>
             {
             // <CreatableSelect
             //   isClearable
