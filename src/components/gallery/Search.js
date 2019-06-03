@@ -17,6 +17,8 @@ class Search extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.onSubmit = this.onSubmit.bind(this)
 
+    this.placeholderImage = 'https://screenshotlayer.com/images/assets/placeholder.png'
+
   }
 
   getArt() {
@@ -38,24 +40,18 @@ class Search extends React.Component {
 
   onSubmit(e) {
 
-    console.log(window.location.href)
+    e.preventDefault()
 
-    if (this.state.data !== null) {
-      e.preventDefault()
-      const query = this.state.searchInput
-      console.log('SUBMIT QUERY', query)
+    const query = this.state.searchInput
+    console.log('SUBMIT QUERY', query)
 
-      const token = Auth.getToken()
-      axios.get('/api/rijksmuseum/collection', {
-        params: { query },
-        headers: { 'Authorization': `Bearer ${token}` }
-      })
-        .then(res => {
-          this.setState({ data: res.data.artObjects })
-          if (window.location.href !== 'http://localhost:8000/#/search') this.props.history.push('/search')
-        })
-        .catch(err => console.error(err))
-    }
+    const token = Auth.getToken()
+    axios.get('/api/rijksmuseum/collection', {
+      params: { query },
+      headers: { 'Authorization': `Bearer ${token}` }
+    })
+      .then(res => this.setState({ data: res.data.artObjects }))
+      .catch(err => console.error(err))
   }
 
   render() {
@@ -66,30 +62,27 @@ class Search extends React.Component {
         <div className="container images-container">
 
           <div className="section">
+            <div className="columns search-container">
+              <div className="column is-12 search-bar">
+                <form onSubmit={this.onSubmit}>
+                  <input
+                    id="searchInput"
+                    name="search"
+                    type="search"
+                    placeholder="search..."
+                    className="search "
+                    onChange={this.handleChange}
+                  />
 
-            {
-              <div className="columns search-container">
-                <div className="column is-6 search-bar">
-                  <form onSubmit={this.onSubmit}>
-                    <input
-                      id="searchInput"
-                      name="search"
-                      type="search"
-                      placeholder="search..."
-                      className="search "
-                      onChange={this.handleChange}
-                    />
-
-                    <button
-                      type="submit"
-                      value="Submit"
-                      placeholder="Submit"
-                      onClick={this.onSubmit}
-                    > Submit </button>
-                  </form>
-                </div>
+                  <button
+                    type="submit"
+                    value="Submit"
+                    placeholder="Submit"
+                    onClick={this.onSubmit}
+                  > Submit </button>
+                </form>
               </div>
-            }
+            </div>
 
 
 
@@ -99,9 +92,10 @@ class Search extends React.Component {
                   <Link to={`/gallery/${art.objectNumber}`}>
                     <div
                       className="art-image"
-                      style={{ backgroundImage: `url(${art.webImage.url})` }} >
-                      <div className="subtitle is-6">{art.title}</div>
+                      style={{backgroundImage: `url(${art.webImage ? art.webImage.url:this.placeholderImage})` }} >
+                      <div className={`is-6 ${art.webImage ? '':'placeholder-'}subtitle`}>{art.title}</div>
                     </div>
+
                   </Link>
                 </div>
               )}
@@ -115,3 +109,7 @@ class Search extends React.Component {
 
 
 export default Search
+
+// || url(${this.placeholderImage})
+
+// style={{ backgroundImage: `url(${art.headerImage.url})` }} >
