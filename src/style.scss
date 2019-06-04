@@ -49,6 +49,8 @@
       display: inline-block;
       margin: auto;
       text-align: center;
+      opacity: 1;
+      transition: all 3s ease;
 
       h1 {
         font-size: 50px;
@@ -67,6 +69,11 @@
         font-size: 25px;
         padding-top: 10px;
         font-weight: 500;
+      }
+
+      &:hover {
+        opacity: 0;
+
       }
     }
 
@@ -178,7 +185,7 @@
     -o-transition: all 3s ease;
     -webkit-transition: all 3s ease;
 
-    .subtitle, .placeholder-subtitle  {
+    .subtitle {
       text-align: center;
       justify-content: center;
       display: flex;
@@ -199,10 +206,6 @@
       color: white;
     }
 
-    .placeholder-subtitle {
-      color: #4a4a4a;
-    }
-
     &:hover {
       transform: scale(1.5);
 
@@ -211,6 +214,12 @@
         opacity: 0.9;
       }
     }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .subtitle {
+    padding: 10px 15px;
   }
 }
 
@@ -250,18 +259,24 @@
   color: #5e4968;
 }
 
-
 .fav-icon {
+  width: 100%;
   display: flex;
   justify-content: flex-end;
-  margin-right: 25px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  color: #5e4968;
-  // color: #4a4a4a;
-}
-.fav-icon:hover {
-  color: lightGrey;
+
+  i.fa-heart {
+    display: flex;
+    width: 30px;
+    justify-content: flex-end;
+    margin-right: 25px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    color: #5e4968;
+    // color: #4a4a4a;
+  }
+  i.fa-heart:hover {
+    color: lightGrey;
+  }
 }
 
 .label {

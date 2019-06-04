@@ -24,7 +24,7 @@ class Home extends React.Component {
             <div className="columns is-centered is-multiline">
               <div className="titles">
                 <h1>Welcome to Artistry</h1>
-                <h3>Discover new Artwork & save your favorites</h3>
+                <h3>Discover new Artwork<br /> & save your favorites</h3>
               </div>
               <div className="column is-half-desktop is-two-thirds-tablet">
                 <div className="section has-text-centered">
