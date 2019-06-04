@@ -4,6 +4,7 @@ import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
 import Navbar from '../common/Navbar'
+import Loading from '../common/Loading'
 
 class Profile extends React.Component {
 
@@ -11,7 +12,7 @@ class Profile extends React.Component {
     super()
 
     this.state = {
-      data: {},
+      data: null,
       favorites: [Favorite.getFavorites()]
     }
   }
@@ -28,10 +29,7 @@ class Profile extends React.Component {
 
 
   render(){
-    console.log('profile this.state.data', this.state.data)
-    console.log('profile this.state.favorites', this.state.favorites)
-    console.log('profile this.state.data.favorites', this.state.data.favorites)
-    if(!this.state.data && !this.state.favorites) return <h1>Loading...</h1>
+    if (!this.state.data) return <Loading />
     return(
       <main>
         <Navbar />

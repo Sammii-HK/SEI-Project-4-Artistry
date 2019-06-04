@@ -10,7 +10,7 @@ class Search extends React.Component {
     super(props)
 
     this.state = {
-      data: [],
+      data: null,
       searchInput: ''
     }
 
@@ -57,6 +57,7 @@ class Search extends React.Component {
 
   render() {
     if (!this.state.data) return <Loading />
+    console.log(this.state.data)
     return (
       <main>
         <Navbar />
