@@ -23,7 +23,7 @@ class Profile extends React.Component {
       headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => this.setState({ data: res.data }))
-      .catch(err => console.error(err))
+      .catch(err => this.setState({ errors: err.response.userData.errors }))
     this.setState({ favorites: Favorite.getFavorites() })
   }
 

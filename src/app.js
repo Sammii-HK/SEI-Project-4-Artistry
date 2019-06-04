@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 // import axios from 'axios'
 
+import FlashMessages from './components/common/FlashMessages'
 import Home from './components/common/Home'
 import Login from './components/auth/Login'
 import Register from './components/auth/Register'
@@ -22,6 +23,7 @@ class App extends React.Component {
     // if(!this.state) return <p>Loading...</p>
     return (
       <Router>
+        <FlashMessages />
         <Switch>
           <SecureRoute path="/gallery/:id" component={GalleryShow} />
           <SecureRoute path="/profile" component={Profile} />

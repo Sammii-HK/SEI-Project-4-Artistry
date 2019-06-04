@@ -4,7 +4,7 @@ from marshmallow import Schema, fields, validates_schema, ValidationError
 from app import db
 
 class Favorite(db.Entity):
-    title = Required(str, unique=True)
+    title = Required(str)
     image = Required(str)
     objectNumber = Required(str)
     user = Required('User')
@@ -16,23 +16,12 @@ class FavoriteSchema(Schema):
     image = fields.Str(required=True)
     objectNumber = fields.Str(required=True)
 
-    @validates_schema
-    def validate_objectNumber(self, data):
-        favorite = Favorite.get(objectNumber=data.get('objectNumber'))
-
-        if favorite:
-            raise ValidationError(
-                field_name='objectNumber',
-                message=['Must be unique']
-            )
-
-
-    @validates_schema
-    def validate_title(self, data):
-        favorite = Favorite.get(title=data.get('title'))
-
-        if favorite:
-            raise ValidationError(
-                field_name='title',
-                message=['Must be unique']
-            )
+    # @validates_schema
+    # def validate_objectNumber(self, data):
+    #     favorite = Favorite.get(objectNumber=data.get('objectNumber'))
+    #
+    #     if favorite:
+    #         raise ValidationError(
+    #             field_name='objectNumber',
+    #             message=['Must be unique']
+    #         )

@@ -3,7 +3,7 @@ from app import db
 from models.User import User, UserSchema
 from models.Favorite import Favorite#, FavoriteSchema
 
-# db.drop_all_tables(with_all_data=True)
+db.drop_all_tables(with_all_data=True)
 db.create_tables()
 
 with db_session():
@@ -13,6 +13,12 @@ with db_session():
     sammii = User(
         username="sammii",
         email="sam@email.com",
+        password_hash=schema.generate_hash('pass')
+    )
+
+    char = User(
+        username="char",
+        email="char@email.com",
         password_hash=schema.generate_hash('pass')
     )
 

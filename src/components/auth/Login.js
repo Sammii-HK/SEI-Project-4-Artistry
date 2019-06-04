@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
 import Navbar from '../common/Navbar'
+import Flash from '../../lib/Flash'
+
 
 class Login extends React.Component {
 
@@ -13,7 +15,7 @@ class Login extends React.Component {
 
     this.state = {
       data: {},
-      error: ''
+      errors: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -31,11 +33,13 @@ class Login extends React.Component {
     axios.post('/api/login', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
+        Flash.setMessage('success', res.data.message)
         Favorite.setFavorites(res.data.favorites)
         this.props.history.push('/profile')
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err.response.data))
   }
+  // .catch(err => this.setState({ errors: err.response.data.errors }) )
 
   render() {
     return (
@@ -57,6 +61,7 @@ class Login extends React.Component {
                         onChange={this.handleChange}
                       />
                     </div>
+                    {this.state.errors.username && (<div className="help is-danger">{this.state.errors.username}</div>)}
                   </div>
                   <div className="field">
                     <label className="label">Password</label>
@@ -70,7 +75,7 @@ class Login extends React.Component {
                       />
                     </div>
 
-                    {this.state.error && <div className="help is-danger">{this.state.error}</div>}
+                    {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
                   </div>
 
                   <button className="button is-info is-medium is-rounded">Submit</button>
