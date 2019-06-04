@@ -88,12 +88,12 @@ class Search extends React.Component {
 
             <div className="columns is-mobile is-multiline">
               {this.state.data.map(art =>
-                <div key={art.objectNumber} className="column is-3-desktop is-6-tablet is-half-mobile">
+                <div key={art.objectNumber} className="column is-3-desktop is-6-tablet is-half-mobile art-container">
                   <Link to={`/gallery/${art.objectNumber}`}>
                     <div
                       className="art-image"
                       style={{backgroundImage: `url(${art.webImage ? art.webImage.url:this.placeholderImage})` }} >
-                      <div className={`is-6 ${art.webImage ? '':'placeholder-'}subtitle`}>{art.title}</div>
+                      <div className={'is-6 subtitle'}>{art.title}</div>
                     </div>
 
                   </Link>
@@ -113,3 +113,6 @@ export default Search
 // || url(${this.placeholderImage})
 
 // style={{ backgroundImage: `url(${art.headerImage.url})` }} >
+
+
+// <div className={`is-6 ${art.webImage ? '':'placeholder-'}subtitle`}>{art.title}</div>
