@@ -64,7 +64,7 @@ class GalleryShow extends React.Component {
 
   render() {
     if (!this.state.data) return <Loading />
-    console.log(this.state.data.classification.people)
+    console.log('people', this.state.data.classification.people)
     return (
       <main>
         <Navbar />
@@ -117,19 +117,39 @@ class GalleryShow extends React.Component {
                       )}
                     </div>
                     <hr />
-                    <div className="columns is-multiline is-mobile">
-                      {this.state.data.materials.map(material =>
-                        <div key={material.value} className="column">
-                          <p className="has-text-centered">{material}</p>
-                        </div>
-                      )}
-                    </div>
+
+
+                    {this.state.data.materials &&
+                      <div className="columns is-multiline is-mobile">
+                        {this.state.data.materials.map(material =>
+                          <div key={material} className="column">
+                            <p className="has-text-centered">{material}</p>
+                          </div>
+                        )}
+                      </div>
+                    }
+
                     <hr />
 
                     {this.state.data.location &&
                     <p className="is-size-5 has-text-weight-semibold">Location in the Rijksmuseum: {this.state.data.location}</p> }
 
-                    {this.state.data.classification.people &&
+                    <hr />
+
+                    {this.state.data.dimensions &&
+                      <div className="columns is-multiline is-mobile">
+                        <h4 className="column is-12 has-text-weight-semibold">Dimensions:</h4>
+                        {this.state.data.dimensions.map(dimension =>
+                          <div key={dimension.value} className="column">
+                            <div className="dimension-box">
+                              <p>{dimension.type}:  {dimension.value}  {dimension.unit}</p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    }
+
+                    {this.state.data.classification.people.length > 0 &&
                       <div className="columns is-multiline is-mobile people-col">
                         <h4 className="column is-12 has-text-weight-semibold">People depicted:</h4>
                         {this.state.data.classification.people.map(person =>
@@ -139,19 +159,12 @@ class GalleryShow extends React.Component {
                         )}
                       </div>
                     }
-
                   </div>
-
-
-
-
-
                 </div>
               </div>
             </div>
           </div>
         </div>
-
       </main>
     )
   }
