@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../../lib/Auth'
 import Navbar from '../common/Navbar'
+import Loading from '../common/Loading'
 
 class Search extends React.Component {
   constructor(props) {
@@ -55,7 +56,7 @@ class Search extends React.Component {
   }
 
   render() {
-    if (!this.state) return <h1>Loading...</h1>
+    if (!this.state.data) return <Loading />
     return (
       <main>
         <Navbar />

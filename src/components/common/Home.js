@@ -19,9 +19,13 @@ class Home extends React.Component {
     return (
       <main>
         <Navbar />
-        <section className="section">
+        <section className="section home">
           <div className="container">
-            <div className="columns is-centered">
+            <div className="columns is-centered is-multiline">
+              <div className="titles">
+                <h1>Welcome to Artistry</h1>
+                <h3>Discover new Artwork & save your favorites</h3>
+              </div>
               <div className="column is-half-desktop is-two-thirds-tablet">
                 <div className="section has-text-centered">
                   <p className="is-size-5">Please <Link to='/login'>Log in</Link></p>

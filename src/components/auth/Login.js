@@ -73,7 +73,7 @@ class Login extends React.Component {
                     {this.state.error && <div className="help is-danger">{this.state.error}</div>}
                   </div>
 
-                  <button className="button">Submit</button>
+                  <button className="button is-info is-medium is-rounded">Submit</button>
                 </form>
                 <div className="section has-text-centered">
                   <p className="is-size-5">Need an account? <Link to='/register'>Register</Link> now</p>

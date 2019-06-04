@@ -5,6 +5,7 @@ import Favorite from '../../lib/Favorite'
 import Magnifier from 'react-magnifier'
 
 import Navbar from '../common/Navbar'
+import Loading from '../common/Loading'
 
 class GalleryShow extends React.Component {
   constructor(props) {
@@ -62,12 +63,8 @@ class GalleryShow extends React.Component {
   }
 
   render() {
-    if (!this.state.data) return <h1>Loading</h1>
-    // <div>
-    //   <i className="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-    //   <span className="sr-only">Loading...</span>
-    // </div>
-
+    if (!this.state.data) return <Loading />
+    console.log(this.state.data.classification.people)
     return (
       <main>
         <Navbar />
@@ -132,19 +129,20 @@ class GalleryShow extends React.Component {
                     {this.state.data.location &&
                     <p className="is-size-5 has-text-weight-semibold">Location in the Rijksmuseum: {this.state.data.location}</p> }
 
+                    {this.state.data.classification.people &&
+                      <div className="columns is-multiline is-mobile people-col">
+                        <h4 className="column is-12 has-text-weight-semibold">People depicted:</h4>
+                        {this.state.data.classification.people.map(person =>
+                          <div key={person} className="column is-4">
+                            <p>{person}</p>
+                          </div>
+                        )}
+                      </div>
+                    }
 
                   </div>
 
 
-                  {this.state.data.classification.people &&
-                  <div className="columns is-multiline is-mobile people-col">
-                    <h4 className="column is-12 has-text-weight-semibold">People depicted:</h4>
-                    {this.state.data.classification.people.map(person =>
-                      <div key={person} className="column is-4">
-                        <p>{person}</p>
-                      </div>
-                    )}
-                  </div> }
 
 
 

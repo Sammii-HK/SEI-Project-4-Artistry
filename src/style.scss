@@ -17,6 +17,85 @@
 //   }
 // }
 
+.hero {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  i {
+    margin-bottom: 100px;
+  }
+}
+
+.home {
+  background-color: lightgrey;
+  color: white;
+  height: 100vh;
+  // background-image: url('https://lh3.googleusercontent.com/J-mxAE7CPu-DXIOx4QKBtb0GC4ud37da1QK7CzbTIDswmvZHXhLm4Tv2-1H3iBXJWAW_bHm7dMl3j5wv_XiWAg55VOM=s0');
+  // background-image: url('https://lh3.googleusercontent.com/D2IPnfkJPa8cPSuhehu5e2aeteqzK5Zb0OzL9-zA4_FHBQHrD8RLT_3XZ9FDYtE64e_cdqTxZF_VfG4MsPcKr90FV6E=s0');
+  // background-image: url('https://lh3.googleusercontent.com/Sh7Wqs6x7MqRWpGu0klYkyAlSZ65vQGHchjYstZoUZnGnebW3Ib174FbZpnXVmg5J0fAL4q8V-mgc3l9PQNQlIq0DjPF=s0');
+  background-image: url('https://lh3.googleusercontent.com/3EDrQy1jW6akN2k8eAeCECHJ1FmvM1f2pb9a-de51ErcQcghh7cbpzFIh-QYdcGfpi3FjxH1AP6C_FvPNR-I9n8I4No=s0');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .container {
+    height: 100%;
+
+    .titles {
+      width: 100%;
+      display: inline-block;
+
+      margin: auto;
+      text-align: center;
+      // justify-content: center;
+      // display: block;
+
+      h1 {
+        font-size: 45px;
+        font-weight: 600;
+        padding-top: 25%;
+      }
+
+      h3 {
+        font-size: 25px;
+        padding-top: 10px;
+        font-weight: 500;
+      }
+    }
+
+    .columns {
+      height: auto;
+
+      .column {
+        height: 100%;
+        display: flex;
+
+        .section {
+          justify-content: center;
+          margin: 10px auto;
+          border-radius: 5px;
+          // background-color: rgba(10,10,10,0.9);
+
+          // position:absolute;
+          // left:50%;
+          // top:50%;
+
+          a {
+            color: #cccccc;
+            font-weight: 600;
+
+            &:hover {
+              // color: #c7b3db;
+              color: #434343;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .images-container {
   .columns {
     height: 250px;
