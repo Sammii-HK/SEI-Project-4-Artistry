@@ -16,11 +16,3 @@ const Loading = () => {
 }
 
 export default Loading
-
-
-
-// <div className="hero-header">
-//   <div className="container">
-//
-//   </div>
-// </div>

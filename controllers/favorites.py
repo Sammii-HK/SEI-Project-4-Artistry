@@ -7,6 +7,7 @@ from marshmallow import ValidationError
 
 router = Blueprint('favorites', __name__)
 
+# gets the favorites
 @router.route('/favorites', methods=['GET'])
 @db_session
 def favorites():
@@ -14,7 +15,7 @@ def favorites():
 
     return schema.dumps(favorites), 200
 
-
+# posts to the favorites
 @router.route('/favorites', methods=['POST'])
 @db_session
 @secure_route
@@ -30,7 +31,7 @@ def create():
 
     return schema.dumps(favorite)
 
-
+# deletes a specific favorite by object number
 @router.route('/favorites/<objectNumber>', methods=['DELETE'])
 @db_session
 @secure_route

@@ -42,10 +42,7 @@ class Search extends React.Component {
   onSubmit(e) {
 
     e.preventDefault()
-
     const query = this.state.searchInput
-    console.log('SUBMIT QUERY', query)
-
     const token = Auth.getToken()
     axios.get('/api/rijksmuseum/collection', {
       params: { query },
@@ -111,10 +108,6 @@ class Search extends React.Component {
 
 
 export default Search
-
-// || url(${this.placeholderImage})
-
-// style={{ backgroundImage: `url(${art.headerImage.url})` }} >
 
 
 // <div className={`is-6 ${art.webImage ? '':'placeholder-'}subtitle`}>{art.title}</div>

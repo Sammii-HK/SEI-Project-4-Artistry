@@ -34,14 +34,15 @@ class Login extends React.Component {
       .then(res => {
         Auth.setToken(res.data.token)
         Flash.setMessage('success', res.data.message)
+        // set the favorites from user db profile into local storage
         Favorite.setFavorites(res.data.favorites)
         this.props.history.push('/profile')
       })
-      .catch(err => console.log(err.response.data))
+      .catch(err => this.setState({ errors: err.response.data.error }))
   }
-  // .catch(err => this.setState({ errors: err.response.data.errors }) )
 
   render() {
+    console.log(this.state.errors)
     return (
       <main>
         <Navbar />
@@ -61,7 +62,8 @@ class Login extends React.Component {
                         onChange={this.handleChange}
                       />
                     </div>
-                    {this.state.errors.username && (<div className="help is-danger">{this.state.errors.username}</div>)}
+
+
                   </div>
                   <div className="field">
                     <label className="label">Password</label>
@@ -75,7 +77,7 @@ class Login extends React.Component {
                       />
                     </div>
 
-                    {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
+
                   </div>
 
                   <button className="button is-info is-medium is-rounded">Submit</button>
@@ -93,3 +95,10 @@ class Login extends React.Component {
 }
 
 export default Login
+
+
+
+// {this.state.errors.username && (<div className="help is-danger">{this.state.errors.username}</div>)}
+
+
+// {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}

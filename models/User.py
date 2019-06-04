@@ -10,6 +10,7 @@ class User(db.Entity):
     username = Required(str, unique=True)
     email = Required(str, unique=True)
     password_hash = Required(str)
+    # set the MANY of the 1:M relationship
     favorites = Set('Favorite')
 
     def is_password_valid(self, plaintext):
@@ -37,6 +38,7 @@ class UserSchema(Schema):
     email = fields.Str(required=True)
     password = fields.Str(load_only=True)
     password_confirmation = fields.Str(load_only=True)
+    # apply the MANY of the 1:M relationship in the schema
     favorites = fields.Nested('FavoriteSchema', many=True)
 
 

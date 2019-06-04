@@ -20,16 +20,16 @@ class GalleryShow extends React.Component {
     this.getArtItem = this.getArtItem.bind(this)
   }
 
-
+  // handle favorites
   handleFavourite() {
     const token = Auth.getToken()
     const image = this.state.data.webImage.url
     const { objectNumber, title } = this.state.data
     const favorite = { objectNumber: objectNumber, title, image }
 
+    // if the selected item is already in favorites
     if(Favorite.isFavorite(favorite)) {
       // remove the favorite
-      console.log('handleFav props render', this.props)
       axios.delete(`/api/favorites/${this.props.match.params.id}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       })
@@ -45,6 +45,7 @@ class GalleryShow extends React.Component {
     }
   }
 
+  // get a specific art item, this is the front end request to the back end, that checks the object number parameter on props
   getArtItem() {
     const token = Auth.getToken()
     axios.get(`/api/rijksmuseum/collection/${this.props.match.params.id}`, {
@@ -58,13 +59,8 @@ class GalleryShow extends React.Component {
     this.getArtItem()
   }
 
-  componentDidUpdate() {
-    console.log('this.state.favorites', this.state.favorites)
-  }
-
   render() {
     if (!this.state.data) return <Loading />
-    console.log('people', this.state.data.classification.people)
     return (
       <main>
         <Navbar />
@@ -85,7 +81,6 @@ class GalleryShow extends React.Component {
                       <Magnifier
                         src={this.state.data.webImage.url}
                         width={500}
-                        // className="image"
                         mgWidth={250}
                         mgHeight={250}
                         zoomFactor={2} />

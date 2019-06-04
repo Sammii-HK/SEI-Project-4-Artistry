@@ -17,8 +17,6 @@ class Navbar extends React.Component {
 
     this.toggleActive = this.toggleActive.bind(this)
     this.logout = this.logout.bind(this)
-    // this.handleChange = this.handleChange.bind(this)
-    // this.onSubmit = this.onSubmit.bind(this)
   }
 
   toggleActive() {
@@ -27,38 +25,10 @@ class Navbar extends React.Component {
 
   logout() {
     Auth.removeToken()
+    // clear favorites in local storage on log out
     Favorite.clearFavorites()
-    // window.location.reload()
     this.props.history.push('/')
   }
-
-  //
-  // handleChange(e) {
-  //   this.setState({ searchInput: e.target.value || '' })
-  // }
-  //
-  //
-  // onSubmit(e) {
-  //
-  //   console.log(window.location.href)
-  //
-  //   if (this.state.data !== null) {
-  //     e.preventDefault()
-  //     const query = this.state.searchInput
-  //     console.log('SUBMIT QUERY', query)
-  //
-  //     const token = Auth.getToken()
-  //     axios.get('/api/rijksmuseum/collection', {
-  //       params: { query },
-  //       headers: { 'Authorization': `Bearer ${token}` }
-  //     })
-  //       .then(res => {
-  //         this.setState({ data: res.data.artObjects })
-  //         if (window.location.href !== 'http://localhost:8000/#/search') this.props.history.push('/search')
-  //       })
-  //       .catch(err => console.error(err))
-  //   }
-  // }
 
   render() {
     return (
@@ -67,7 +37,6 @@ class Navbar extends React.Component {
           <div className="navbar-brand">
             {
               /* Navbar branding and burger menu */
-            // <Link to="/" className="navbar-item is-size-4">Artistry</Link>
             }
             {Auth.isAuthenticated() && <Link to="/search" className="navbar-item is-size-4">Artistry</Link>}
             {!Auth.isAuthenticated() && <Link to="/" className="navbar-item is-size-4">Artistry</Link>}
@@ -84,32 +53,6 @@ class Navbar extends React.Component {
             {/* Everything else */}
             <div className="navbar-start">
               {/* left-hand links */}
-              <div className="search-container">
-
-                {
-                  // <form onSubmit={this.onSubmit}>
-                  //   <input
-                  //     id="searchInput"
-                  //     name="search"
-                  //     type="search"
-                  //     placeholder="search..."
-                  //     className="search "
-                  //     onChange={this.handleChange}
-                  //   />
-                  //
-                  //   {
-                  //     <button
-                  //       type="submit"
-                  //       value="Submit"
-                  //       placeholder="Submit"
-                  //       onClick={this.onSubmit}
-                  //     > Submit </button>
-                  //   }
-                  // </form>
-                }
-
-              </div>
-
             </div>
             <div className="navbar-end">
               {/* right-hand links */}
