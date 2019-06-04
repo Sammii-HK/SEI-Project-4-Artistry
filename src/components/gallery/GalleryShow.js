@@ -77,7 +77,7 @@ class GalleryShow extends React.Component {
                 onClick={this.handleFavourite}></i>
             </div>
             <div className="columns is-multiline is-centered">
-              <div className="column is-12-desktop is-9-tablet is-9-mobile">
+              <div className="column is-12-desktop is-10-tablet is-11-mobile">
                 <div className="columns is-multiline is-centered">
 
                   {this.state.data.webImage &&
@@ -92,7 +92,7 @@ class GalleryShow extends React.Component {
                     </div>
                   }
 
-                  <div className="column is-8">
+                  <div className="column is-8 is-11-mobile">
                     <div className="title is-4">{this.state.data.title}</div>
                     <div className="subtitle is-4 has-text-right">{this.state.data.principalOrFirstMaker}</div>
                     <p>{this.state.data.plaqueDescriptionEnglish}</p>
