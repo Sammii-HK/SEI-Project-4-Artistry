@@ -38,7 +38,7 @@
 
 ##The Description
 
-<img width="1440" alt="Screenshot 2019-06-04 23 35 09" src="https://user-images.githubusercontent.com/40900195/58918469-494e0b00-8722-11e9-94c8-e0d17fc665c2.png">
+<img width="1559" alt="Screenshot 2019-07-03 at 23 41 36" src="https://user-images.githubusercontent.com/40900195/60629156-84f4f700-9dec-11e9-96e9-d19984492111.png">
 
 *Link to Live site: https://artistry-api-app.herokuapp.com/#/*
 
@@ -65,6 +65,8 @@ I achieved this with many subtle uses of user interaction on hover states and ut
 ## Process
 
 The brief was to build a full-stack application with a React front-end and SQL database. The application had to include data schema and a RESTful api framework to be built with Python. Because of this my first concern was my database and orangising the one:many relationship I had in mind for users to add favorites art works.
+
+<img width="1680" alt="Screenshot 2019-07-03 at 23 41 22" src="https://user-images.githubusercontent.com/40900195/60629130-70186380-9dec-11e9-9572-f98f13c8e2ba.png">
 
 I chose to use the Rijksmuseum API as it was populated with lots of quality data, but most importantly it included high quality images of most of its artworks.
 
@@ -106,7 +108,7 @@ def search():
     )
 ```
 
-<img width="1440" alt="Screenshot 2019-06-04 23 38 33" src="https://user-images.githubusercontent.com/40900195/58919018-82877a80-8724-11e9-8384-9544f836cb43.png">
+<img width="1680" alt="Screenshot 2019-07-03 at 23 41 05" src="https://user-images.githubusercontent.com/40900195/60629164-8aead800-9dec-11e9-80aa-d326dfda7787.png">
 
 ### Achievements
 
@@ -121,3 +123,8 @@ Due to the time scale of 7 days, I needed to scale down my ambitions of this app
 I also want to add a feature which shows exactly where in the museum the artwork can be found, and then save these locations on a map, available through the profile page.
 
 Going forward it would be good to make the database more complex, and include features where users can recommend pieces of art to other users or share the item on social networking sites.
+
+
+
+
+
