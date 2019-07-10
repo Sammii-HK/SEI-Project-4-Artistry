@@ -1,6 +1,6 @@
 # Python & React App – SEI Project 4
 
-[Live Site](*https://artistry-api-app.herokuapp.com/#/*): https://artistry-api-app.herokuapp.com/#/
+[Live Site](https://artistry-api-app.herokuapp.com/#/): https://artistry-api-app.herokuapp.com/#/
 
 ### Timeframe
 
