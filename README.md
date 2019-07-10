@@ -34,9 +34,7 @@
 
 
 
-## Installation
-
-###The Description
+## Description
 
 <img width="1559" alt="Screenshot 2019-07-03 at 23 41 36" src="https://user-images.githubusercontent.com/40900195/60629156-84f4f700-9dec-11e9-96e9-d19984492111.png">
 
