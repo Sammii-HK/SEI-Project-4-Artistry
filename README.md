@@ -1,4 +1,6 @@
-# SEI Project 4 – Python & React App
+# Python & React App – SEI Project 4
+
+[Live Site](*https://artistry-api-app.herokuapp.com/#/*) 
 
 ### Timeframe
 
@@ -58,7 +60,7 @@ I wanted to create a minimalist experience which demonstrated the artwork as the
 
 I achieved this with many subtle uses of user interaction on hover states and utalising packagaes available with npm, so users can delve deeper into the artworks.
 
-<img width="1440" alt="Screenshot 2019-06-04 23 57 13" src="https://user-images.githubusercontent.com/40900195/58919014-7dc2c680-8724-11e9-92a7-4d898a4686a6.png">
+<img width="1440" alt="Screenshot 2019-06-04 23 57 13" src="https://user-images.githubusercontent.com/40900195/60984774-296ac200-a334-11e9-9a78-864cb3db8748.png">
 
 
 
