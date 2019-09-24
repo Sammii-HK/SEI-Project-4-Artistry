@@ -10,7 +10,7 @@ class User(db.Entity):
     username = Required(str, unique=True)
     email = Required(str, unique=True)
     password_hash = Required(str)
-    # set the MANY of the 1:M relationship
+    # set the MANY of the M:M relationship
     favorites = Set('Favorite')
 
     def is_password_valid(self, plaintext):

@@ -6,7 +6,7 @@
 
 7 days
 
-## Technolgies Used
+## Technologies Used
 
 * React
 
@@ -50,7 +50,7 @@ The brief was to create a full-stack app using React and Python, which worked wi
 
 ### Overview
 
-My initial idea came from the their being no obvious central place for artworks from many museums and in time I would incorporate other Museums data to create a larger database to search from.
+My initial idea came from there being no obvious central place for artworks from many museums and in time I would incorporate other Museums data to create a larger database to search from.
 
 I wanted to create a minimalist experience which demonstrated the artwork as the main focus of the page. The Magnifier package allows users to interact with the images and takes advantage of the quality of photographs available from the API.
 

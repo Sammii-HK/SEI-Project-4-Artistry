@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, withRouter } from 'react-router-dom'
-// import axios from 'axios'
 
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
