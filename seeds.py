@@ -1,4 +1,4 @@
-from pony.orm import db_session, Required
+from pony.orm import db_session
 from app import db
 from models.User import User, UserSchema
 from models.Favorite import Favorite#, FavoriteSchema
@@ -16,10 +16,16 @@ with db_session():
         password_hash=schema.generate_hash('pass')
     )
 
+    char = User(
+        username="char",
+        email="char@email.com",
+        password_hash=schema.generate_hash('pass')
+    )
+
     Favorite(
         title="Night's Watch",
         image="https://lh3.googleusercontent.com/J-mxAE7CPu-DXIOx4QKBtb0GC4ud37da1QK7CzbTIDswmvZHXhLm4Tv2-1H3iBXJWAW_bHm7dMl3j5wv_XiWAg55VOM=s0",
-        object_number="SK-C-5",
+        objectNumber="SK-C-5",
         user=sammii
     )
 

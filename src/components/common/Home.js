@@ -1,8 +1,7 @@
 import React from 'react'
 
 import Navbar from './Navbar'
-import Search from '../gallery/Search'
-// import Profile from '../gallery/Profile'
+import { Link } from 'react-router-dom'
 
 class Home extends React.Component {
   constructor() {
@@ -12,29 +11,30 @@ class Home extends React.Component {
       data: null,
       gallery: null
     }
-
-    // this.getArt = this.getArt.bind(this)
-    // this.galleryToggle = this.galleryToggle.bind(this)
   }
-
-  // galleryToggle() {
-  //   this.setState( { gallery: !!true} )
-  //   return this.state.gallery === true ? 'active': 'hidden'
-  // }
-  //
-  // FOR REFERENCE
-  // toggleMarker(marker){
-  //   return this.state.activeLocation === marker? 'active-marker': 'marker'
-  // }
 
   render() {
     // if (!this.state.data) return <h1>Loading...</h1>
     return (
       <main>
         <Navbar />
-        <Search
-          // data={this.state.data}
-        />
+        <section className="section home">
+          <div className="container">
+            <div className="columns is-centered is-multiline">
+              <div className="titles">
+                <h1>Welcome to Artistry</h1>
+                <h3>Discover new Artwork<br /> & save your favorites</h3>
+              </div>
+              <div className="column is-half-desktop is-two-thirds-tablet">
+                <div className="section has-text-centered">
+                  <p className="is-size-5">Please <Link to='/login'>Log in</Link></p>
+                  <p>OR</p>
+                  <p className="is-size-5">Need an account? <Link to='/register'>Register</Link> now</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     )
   }

@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import Auth from '../../lib/Auth'
 import Favorite from '../../lib/Favorite'
 import Navbar from '../common/Navbar'
+import Flash from '../../lib/Flash'
+
 
 class Login extends React.Component {
 
@@ -13,7 +15,7 @@ class Login extends React.Component {
 
     this.state = {
       data: {},
-      error: ''
+      errors: {}
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -31,14 +33,16 @@ class Login extends React.Component {
     axios.post('/api/login', this.state.data)
       .then(res => {
         Auth.setToken(res.data.token)
-        console.log('token', res.data.token)
+        Flash.setMessage('success', res.data.message)
+        // set the favorites from user db profile into local storage
         Favorite.setFavorites(res.data.favorites)
         this.props.history.push('/profile')
       })
-      .catch(err => console.log(err))
+      .catch(err => this.setState({ errors: err.response.data.error }))
   }
 
   render() {
+    console.log(this.state.errors)
     return (
       <main>
         <Navbar />
@@ -58,6 +62,8 @@ class Login extends React.Component {
                         onChange={this.handleChange}
                       />
                     </div>
+
+
                   </div>
                   <div className="field">
                     <label className="label">Password</label>
@@ -71,10 +77,10 @@ class Login extends React.Component {
                       />
                     </div>
 
-                    {this.state.error && <div className="help is-danger">{this.state.error}</div>}
+
                   </div>
 
-                  <button className="button">Submit</button>
+                  <button className="button is-info is-medium is-rounded">Submit</button>
                 </form>
                 <div className="section has-text-centered">
                   <p className="is-size-5">Need an account? <Link to='/register'>Register</Link> now</p>
@@ -89,3 +95,10 @@ class Login extends React.Component {
 }
 
 export default Login
+
+
+
+// {this.state.errors.username && (<div className="help is-danger">{this.state.errors.username}</div>)}
+
+
+// {this.state.errors.password && (<div className="help is-danger">{this.state.errors.password}</div>)}
