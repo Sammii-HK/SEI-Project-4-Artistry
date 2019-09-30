@@ -100,14 +100,15 @@ class GalleryShow extends React.Component {
 
                     <hr />
 
+
                     <div className="columns is-multiline is-mobile">
                       {this.state.data.colors.map(color =>
                         <div key={color} className="column is-3-mobile is-4-tablet">
                           <div
                             className="color-box"
-                            style={{ backgroundColor: color }} >
+                            style={{ backgroundColor: color.hex }} >
                           </div>
-                          <p className="color">{color}</p>
+                          <p className="color">{color.hex}</p>
                         </div>
                       )}
                     </div>
