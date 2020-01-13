@@ -42,7 +42,7 @@
 
 ### Introduction
 
-The app allows users to search through the Rijksmuseum API and view individual items of artwork, users can then save items as a favorite artwork, which can be viewed on their profile page.
+The app allows users to search through the Rijksmuseum API and view individual items of artwork, users can then save items as a favourite artwork, which can be viewed on their profile page.
 
 ### The Brief
 
